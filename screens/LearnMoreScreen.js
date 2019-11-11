@@ -35,6 +35,8 @@ export default function LearnMoreScreen() {
             veniam. Magna cillum eu minim ex amet in duis id et eiusmod
             cupidatat laborum.
           </Text>
+        </View>
+        <View style={styles.aboutContainer}>
           <Text style={{ fontSize: 30, paddingTop: 20, paddingBottom: 20 }}>
             Paper
           </Text>
@@ -49,6 +51,8 @@ export default function LearnMoreScreen() {
             veniam. Magna cillum eu minim ex amet in duis id et eiusmod
             cupidatat laborum.
           </Text>
+        </View>
+        <View style={styles.aboutContainer}>
           <Text style={{ fontSize: 30, paddingTop: 20, paddingBottom: 20 }}>
             Plastic
           </Text>
@@ -76,8 +80,7 @@ LearnMoreScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 15
+    flex: 1
     /* backgroundColor: "#fff" */
   },
   aboutContainer: {
@@ -85,6 +88,7 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     paddingTop: 20,
     paddingBottom: 20,
-    padding: 20
+    padding: 20,
+    marginTop: 40
   }
 });

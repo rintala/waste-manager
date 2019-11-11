@@ -47,14 +47,14 @@ AboutScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 15
+    flex: 1
   },
   aboutContainer: {
     backgroundColor: "#fff",
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,
-    opacity: 0.7
+    opacity: 0.7,
+    marginTop: 40
   }
 });

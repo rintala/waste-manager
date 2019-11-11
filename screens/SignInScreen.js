@@ -6,8 +6,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View
+  TouchableHighlight,
+  View,
+  Button,
+  Alert
 } from "react-native";
 
 import { MonoText } from "../components/StyledText";
@@ -22,7 +24,7 @@ export default function SignInScreen() {
         <View style={styles.welcomeContainer}>
           <Image
             source={require("../assets/images/waste-logo.png")}
-            style={styles.welcomeImage}
+            style={styles.incrementButtonImage}
           />
         </View>
 
@@ -31,12 +33,69 @@ export default function SignInScreen() {
           <Text style={styles.homeSubTitle}>Stockholm Royal Seaport</Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          <View>
+            <Image
+              style={styles.incrementButtonImage}
+              source={require("../assets/images/trash-bin.png")}
+            />
+
+            <TouchableHighlight
+              style={{
+                height: 50,
+                width: 100,
+                borderRadius: 20,
+                backgroundColor: "green",
+                flex: 1,
+
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+              onPress={() => Alert.alert("Button with adjusted color pressed")}
+            >
+              <Text style={{ fontSize: 40 }}>+</Text>
+            </TouchableHighlight>
+          </View>
+          <View>
+            <Image
+              style={styles.incrementButtonImage}
+              source={require("../assets/images/trash-bin.png")}
+            />
+            <TouchableHighlight
+              style={{
+                height: 50,
+                width: 100,
+                borderRadius: 20,
+                backgroundColor: "yellow",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+              onPress={() => Alert.alert("Button with adjusted color pressed")}
+            >
+              <Text style={{ fontSize: 40 }}>+</Text>
+            </TouchableHighlight>
+          </View>
+          <View>
+            <Image
+              style={styles.incrementButtonImage}
+              source={require("../assets/images/trash-bin.png")}
+            />
+            <TouchableHighlight
+              style={{
+                height: 50,
+                width: 100,
+                borderRadius: 20,
+                backgroundColor: "#00a3ff",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+              onPress={() => Alert.alert("Button with adjusted color pressed")}
+            >
+              <Text style={{ fontSize: 40 }}>+</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -165,9 +224,12 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5
   },
-  helpContainer: {
+  buttonsContainer: {
     marginTop: 15,
-    alignItems: "center"
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center"
   },
   helpLink: {
     paddingVertical: 15
@@ -175,5 +237,9 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
+  },
+  incrementButtonImage: {
+    width: 100,
+    height: 100
   }
 });
