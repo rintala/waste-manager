@@ -1,78 +1,107 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarIcon from "../components/TabBarIcon";
+import SignInScreen from "../screens/SignInScreen";
+import GeneralInfoScreen from "../screens/GeneralInfoScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import LearnMoreScreen from "../screens/LearnMoreScreen";
 
 const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
+  web: { headerMode: "screen" },
+  default: {}
 });
 
-const HomeStack = createStackNavigator(
+const SignInStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    SignIn: SignInScreen
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+SignInStack.navigationOptions = {
+  tabBarLabel: "My stats",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        Platform.OS === "ios"
+          ? `ios-md${focused ? "" : "-outline"}`
+          : "md-person"
       }
     />
-  ),
+  )
 };
 
-HomeStack.path = '';
+SignInStack.path = "";
 
-const LinksStack = createStackNavigator(
+const GeneralInfoStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    GeneralInfo: GeneralInfoScreen
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+GeneralInfoStack.navigationOptions = {
+  tabBarLabel: "General Info",
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === "ios"
+          ? `ios-information-circle${focused ? "" : "-outline"}`
+          : "md-information-circle"
+      }
+    />
+  )
 };
 
-LinksStack.path = '';
+GeneralInfoStack.path = "";
+
+const LearnMoreStack = createStackNavigator(
+  {
+    LearnMore: LearnMoreScreen
+  },
+  config
+);
+
+LearnMoreStack.navigationOptions = {
+  tabBarLabel: "Learn More",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-link" : "md-link"}
+    />
+  )
+};
+
+LearnMoreStack.path = "";
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: SettingsScreen
   },
   config
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
+  tabBarLabel: "Settings",
+  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={""} />
 };
 
-SettingsStack.path = '';
+SettingsStack.path = "";
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  SignInStack,
+  GeneralInfoStack,
+  LearnMoreStack
+  //SettingsStack
 });
 
-tabNavigator.path = '';
+tabNavigator.path = "";
 
 export default tabNavigator;
