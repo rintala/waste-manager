@@ -10,6 +10,7 @@ import SignInScreen from "../screens/SignInScreen";
 import GeneralInfoScreen from "../screens/GeneralInfoScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import LearnMoreScreen from "../screens/LearnMoreScreen";
+import AboutScreen from "../screens/AboutScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -30,7 +31,7 @@ SignInStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === "ios"
-          ? `ios-md${focused ? "" : "-outline"}`
+          ? `ios-person${focused ? "" : "-outline"}`
           : "md-person"
       }
     />
@@ -74,12 +75,31 @@ LearnMoreStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-link" : "md-link"}
+      name={Platform.OS === "ios" ? "ios-bulb" : "md-bulb"}
     />
   )
 };
 
 LearnMoreStack.path = "";
+
+const AboutStack = createStackNavigator(
+  {
+    About: AboutScreen
+  },
+  config
+);
+
+AboutStack.navigationOptions = {
+  tabBarLabel: "About",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-bulb" : "md-bulb"}
+    />
+  )
+};
+
+AboutStack.path = "";
 
 const SettingsStack = createStackNavigator(
   {
@@ -98,7 +118,8 @@ SettingsStack.path = "";
 const tabNavigator = createBottomTabNavigator({
   SignInStack,
   GeneralInfoStack,
-  LearnMoreStack
+  LearnMoreStack,
+  AboutStack
   //SettingsStack
 });
 
