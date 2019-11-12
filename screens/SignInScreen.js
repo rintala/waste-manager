@@ -14,7 +14,7 @@ import {
 
 import { MonoText } from "../components/StyledText";
 
-export default function SignInScreen() {
+export default function SignInScreen(props) {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -96,6 +96,17 @@ export default function SignInScreen() {
               <Text style={{ fontSize: 40 }}>+</Text>
             </TouchableHighlight>
           </View>
+        </View>
+        <View style={{ alignItems: "center", marginTop: 20 }}>
+          <TouchableHighlight
+            onPress={() => props.navigation.navigate("About")}
+            style={{
+              backgroundColor: "green",
+              width: 100
+            }}
+          >
+            <Text style={{ color: "white", padding: 10 }}>About us</Text>
+          </TouchableHighlight>
         </View>
       </ScrollView>
     </View>
