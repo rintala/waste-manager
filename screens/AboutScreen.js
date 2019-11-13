@@ -21,12 +21,15 @@ export default function AboutScreen() {
          * Go ahead and delete ExpoLinksView and replace it with your content;
          * we just wanted to provide you with some helpful links.
          */}
+        <View>
+        <Text style={{color: "white", fontSize: 30, fontFamily: 'Helvetica Neue', paddingTop: 30, paddingLeft: 20, textDecorationLine: "underline"}}>{"About us"}</Text>
+        </View>
 
         <View style={styles.aboutContainer}>
-          <Text style={{ fontSize: 30, paddingBottom: 20 }}>
+          <Text style={{ fontSize: 20, paddingBottom: 10, fontFamily: 'Helvetica Neue', color: "#6E6E6E"}}>
             {"KTH meets Stockholm Royal Seaport"}
           </Text>
-          <Text style={{ fontSize: 20 }}>
+          <Text style={{ fontSize: 14, fontFamily: 'Helvetica Neue', color: "#6E6E6E" }}>
             This is a prototype developed for the course DH2465 Computer
             Science, Business and Management at the Royal Institute of
             Technology. The prototype is developed by Edward Alpsten, Lukas
@@ -42,7 +45,8 @@ export default function AboutScreen() {
 }
 
 AboutScreen.navigationOptions = {
-  title: "About us"
+  header: null
+  
 };
 
 const styles = StyleSheet.create({
@@ -51,10 +55,13 @@ const styles = StyleSheet.create({
   },
   aboutContainer: {
     backgroundColor: "#fff",
+    marginLeft: 20,
+    marginRight: 20,
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,
-    opacity: 0.7,
-    marginTop: 40
+    opacity: 0.82,
+    marginTop: 30,
+    borderRadius: 10
   }
 });

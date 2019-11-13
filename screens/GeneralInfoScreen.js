@@ -32,14 +32,22 @@ export default function GeneralInfoScreen() {
          * Go ahead and delete ExpoLinksView and replace it with your content;
          * we just wanted to provide you with some helpful links.
          */}
+         <View>
+          <Text style={{color: "white", fontSize: 30, fontFamily: 'Helvetica Neue', paddingTop: 30, paddingLeft: 20, textDecorationLine: "underline"}}>{"General information"}</Text>
+        </View>
+        
+
         <View style={styles.aboutContainer}>
-          <Text style={{ fontSize: 30, paddingTop: 20, paddingBottom: 20 }}>
+        <Text style={{ fontSize: 20, paddingBottom: 10, fontFamily: 'Helvetica Neue', color: "#6E6E6E" }}>
             Waste Details
           </Text>
 
-          <VictoryChart width={350} theme={VictoryTheme.material}>
+          <VictoryChart style={styles.barChart} width={350} height={300} theme={VictoryTheme.material}>
             <VictoryBar data={data} x="quarter" y="earnings" />
           </VictoryChart>
+        </View>
+
+        <View style={styles.aboutContainer}>
           <VictoryPie
             colorScale={["#008f68", "#6DB65B", "#4AAE9B", "#EFBB35"]}
             data={[
@@ -48,14 +56,15 @@ export default function GeneralInfoScreen() {
               { x: "Plast", y: 2600 }
             ]}
           />
-        </View>
+          </View>
+
       </ScrollView>
     </ImageBackground>
   );
 }
 
 GeneralInfoScreen.navigationOptions = {
-  title: "General Info"
+  header: null
 };
 
 const styles = StyleSheet.create({
@@ -65,10 +74,14 @@ const styles = StyleSheet.create({
   },
   aboutContainer: {
     backgroundColor: "#fff",
+    
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,
     marginTop: 40,
-    opacity: 0.7
+    opacity: 0.9
+  },
+  barchart: {
+    alignItems: "center"
   }
 });

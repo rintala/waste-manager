@@ -11,6 +11,7 @@ import GeneralInfoScreen from "../screens/GeneralInfoScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import LearnMoreScreen from "../screens/LearnMoreScreen";
 import AboutScreen from "../screens/AboutScreen";
+import MyStatScreen from "../screens/MyStatScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -115,12 +116,28 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = "";
 
+const MyStatStack = createStackNavigator(
+  {
+    MyStat: MyStatScreen
+  },
+  config
+);
+
+MyStatStack.navigationOptions = {
+  tabBarLabel: "My Stat",
+  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={""} />
+};
+
+MyStatStack.path = "";
+
 const tabNavigator = createBottomTabNavigator({
   SignInStack,
   GeneralInfoStack,
   LearnMoreStack,
-  AboutStack
+  AboutStack,
+  MyStatStack
   //SettingsStack
+  
 });
 
 tabNavigator.path = "";

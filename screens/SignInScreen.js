@@ -9,7 +9,8 @@ import {
   TouchableHighlight,
   View,
   Button,
-  Alert
+  Alert,
+  TextInput
 } from "react-native";
 
 import { MonoText } from "../components/StyledText";
@@ -28,93 +29,64 @@ export default function SignInScreen(props) {
           />
         </View>
 
+        <View>
+          <Text style={{marginTop: 50, textAlign: "center", color: "white", fontSize: 35, fontFamily: 'Helvetica Neue' }}>{"WASTE MANAGER"}</Text>
+        </View>
+
+        <View
+          style={{
+            marginTop: 20,
+            borderBottomColor: 'white',
+            borderBottomWidth: 1,
+            width: 300,
+            marginLeft: 60
+          }}
+        />
+
         <View style={styles.getStartedContainer}>
-          <Text style={styles.homeTitle}>WASTE MANAGER</Text>
-          <Text style={styles.homeSubTitle}>Stockholm Royal Seaport</Text>
+          <Text style={{textAlign: "center", color: "white", marginTop: 20, marginBottom: 20, fontSize: 20, fontFamily: 'Helvetica Neue'}}>STOCKHOLM ROYAL SEAPORT</Text>
         </View>
 
-        <View style={styles.buttonsContainer}>
-          <View>
-            <Image
-              style={styles.incrementButtonImage}
-              source={require("../assets/images/trash-bin.png")}
-            />
-
-            <TouchableHighlight
-              style={{
-                height: 50,
-                width: 100,
-                borderRadius: 20,
-                backgroundColor: "green",
-                flex: 1,
-
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => Alert.alert("Button with adjusted color pressed")}
-            >
-              <Text style={{ fontSize: 40 }}>+</Text>
-            </TouchableHighlight>
-          </View>
-          <View>
-            <Image
-              style={styles.incrementButtonImage}
-              source={require("../assets/images/trash-bin.png")}
-            />
-            <TouchableHighlight
-              style={{
-                height: 50,
-                width: 100,
-                borderRadius: 20,
-                backgroundColor: "yellow",
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => Alert.alert("Button with adjusted color pressed")}
-            >
-              <Text style={{ fontSize: 40 }}>+</Text>
-            </TouchableHighlight>
-          </View>
-          <View>
-            <Image
-              style={styles.incrementButtonImage}
-              source={require("../assets/images/trash-bin.png")}
-            />
-            <TouchableHighlight
-              style={{
-                height: 50,
-                width: 100,
-                borderRadius: 20,
-                backgroundColor: "#00a3ff",
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => Alert.alert("Button with adjusted color pressed")}
-            >
-              <Text style={{ fontSize: 40 }}>+</Text>
-            </TouchableHighlight>
-          </View>
+        <View style={{ marginTop: 100, marginLeft: 60, marginBottom: 10, justifyContent: "center", paddingLeft: 10, alignItems: "left", backgroundColor: "white", width: 300, height: 30, borderRadius: 10}}>
+          <TextInput
+            placeholder = "Tag number"
+            keyboardType = "number-pad"
+            underlineColorAndroid = "transparent"
+          />
         </View>
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <TouchableHighlight
-            onPress={() => props.navigation.navigate("About")}
-            style={{
-              backgroundColor: "green",
-              width: 100
-            }}
+
+        <View style={{marginLeft: 60, marginBottom: 20, justifyContent: "center", paddingLeft: 10, alignItems: "left", backgroundColor: "white", width: 300, height: 30, borderRadius: 10}}>
+          <TextInput
+            placeholder = "Password"
+            keyboardType = "default"
+            underlineColorAndroid = "transparent"
+          />
+        </View>
+        <View style={{justifyContent: "center", alignItems: "center"}}>
+        <TouchableHighlight
+          onPress={() => props.navigation.navigate("MyStat")}
+          style={{
+            backgroundColor: "#7A9A7E",
+            borderRadius: 10,
+            width: 300,
+            alignItems: "center"
+          }}
           >
-            <Text style={{ color: "white", padding: 10 }}>About us</Text>
+            <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
         </View>
-      </ScrollView>
+
+        <View>
+          <Text style={{marginTop: 20, textAlign: "center", color: "white"}}>Forgot password?</Text>
+        </View>
+
+        </ScrollView>
     </View>
   );
 }
 
 SignInScreen.navigationOptions = {
-  header: null
+  header: null,
 };
 
 function DevelopmentModeNotice() {
@@ -250,7 +222,9 @@ const styles = StyleSheet.create({
     color: "#2e78b7"
   },
   incrementButtonImage: {
-    width: 100,
-    height: 100
-  }
+    marginTop: 50,
+    width: 150,
+    height: 150
+  },
+
 });
