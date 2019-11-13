@@ -4,8 +4,10 @@ import {
   StyleSheet,
   View,
   Text,
-  ImageBackground
+  ImageBackground,
+  Platform
 } from "react-native";
+
 import {
   VictoryBar,
   VictoryChart,
@@ -32,17 +34,36 @@ export default function GeneralInfoScreen() {
          * Go ahead and delete ExpoLinksView and replace it with your content;
          * we just wanted to provide you with some helpful links.
          */}
-         <View>
-          <Text style={{color: "white", fontSize: 30, fontFamily: 'Helvetica Neue', paddingTop: 30, paddingLeft: 20, textDecorationLine: "underline"}}>{"General information"}</Text>
+        <View>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 30,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              paddingTop: 30,
+              paddingLeft: 20,
+              textDecorationLine: "underline"
+            }}
+          >
+            {"General information"}
+          </Text>
         </View>
-        
 
         <View style={styles.aboutContainer}>
-        <Text style={{ fontSize: 20, paddingBottom: 10, fontFamily: 'Helvetica Neue', color: "#6E6E6E" }}>
+          <Text
+            style={{
+              fontSize: 20,
+              paddingBottom: 10,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              color: "#6E6E6E"
+            }}
+          >
             Waste Details
           </Text>
 
-          <VictoryChart style={styles.barChart} width={350} height={300} theme={VictoryTheme.material}>
+          <VictoryChart style={styles.barChart} width={350} height={300}>
             <VictoryBar data={data} x="quarter" y="earnings" />
           </VictoryChart>
         </View>
@@ -56,8 +77,7 @@ export default function GeneralInfoScreen() {
               { x: "Plast", y: 2600 }
             ]}
           />
-          </View>
-
+        </View>
       </ScrollView>
     </ImageBackground>
   );
@@ -74,7 +94,7 @@ const styles = StyleSheet.create({
   },
   aboutContainer: {
     backgroundColor: "#fff",
-    
+
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,

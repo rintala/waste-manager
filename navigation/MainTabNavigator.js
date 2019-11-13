@@ -1,9 +1,10 @@
 import React from "react";
-import { Platform } from "react-native";
 import {
   createStackNavigator,
   createBottomTabNavigator
 } from "react-navigation";
+
+import { Platform } from "react-native";
 
 import TabBarIcon from "../components/TabBarIcon";
 import SignInScreen from "../screens/SignInScreen";
@@ -137,7 +138,6 @@ const tabNavigator = createBottomTabNavigator({
   AboutStack,
   MyStatStack
   //SettingsStack
-  
 });
 
 tabNavigator.path = "";

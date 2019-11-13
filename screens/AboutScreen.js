@@ -7,6 +7,7 @@ import {
   ImageBackground,
   Image
 } from "react-native";
+import { Platform } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 import backgroundImage from "../assets/images/background-green.png";
 
@@ -22,14 +23,40 @@ export default function AboutScreen() {
          * we just wanted to provide you with some helpful links.
          */}
         <View>
-        <Text style={{color: "white", fontSize: 30, fontFamily: 'Helvetica Neue', paddingTop: 30, paddingLeft: 20, textDecorationLine: "underline"}}>{"About us"}</Text>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 30,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              paddingTop: 30,
+              paddingLeft: 20,
+              textDecorationLine: "underline"
+            }}
+          >
+            {"About us"}
+          </Text>
         </View>
 
         <View style={styles.aboutContainer}>
-          <Text style={{ fontSize: 20, paddingBottom: 10, fontFamily: 'Helvetica Neue', color: "#6E6E6E"}}>
+          <Text
+            style={{
+              fontSize: 20,
+              paddingBottom: 10,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              color: "#6E6E6E"
+            }}
+          >
             {"KTH meets Stockholm Royal Seaport"}
           </Text>
-          <Text style={{ fontSize: 14, fontFamily: 'Helvetica Neue', color: "#6E6E6E" }}>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
+            }}
+          >
             This is a prototype developed for the course DH2465 Computer
             Science, Business and Management at the Royal Institute of
             Technology. The prototype is developed by Edward Alpsten, Lukas
@@ -46,7 +73,6 @@ export default function AboutScreen() {
 
 AboutScreen.navigationOptions = {
   header: null
-  
 };
 
 const styles = StyleSheet.create({

@@ -30,13 +30,24 @@ export default function SignInScreen(props) {
         </View>
 
         <View>
-          <Text style={{marginTop: 50, textAlign: "center", color: "white", fontSize: 35, fontFamily: 'Helvetica Neue' }}>{"WASTE MANAGER"}</Text>
+          <Text
+            style={{
+              marginTop: 50,
+              textAlign: "center",
+              color: "white",
+              fontSize: 35,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
+            }}
+          >
+            {"WASTE MANAGER"}
+          </Text>
         </View>
 
         <View
           style={{
             marginTop: 20,
-            borderBottomColor: 'white',
+            borderBottomColor: "white",
             borderBottomWidth: 1,
             width: 300,
             marginLeft: 60
@@ -44,49 +55,87 @@ export default function SignInScreen(props) {
         />
 
         <View style={styles.getStartedContainer}>
-          <Text style={{textAlign: "center", color: "white", marginTop: 20, marginBottom: 20, fontSize: 20, fontFamily: 'Helvetica Neue'}}>STOCKHOLM ROYAL SEAPORT</Text>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "white",
+              marginTop: 20,
+              marginBottom: 20,
+              fontSize: 20,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
+            }}
+          >
+            STOCKHOLM ROYAL SEAPORT
+          </Text>
         </View>
 
-        <View style={{ marginTop: 100, marginLeft: 60, marginBottom: 10, justifyContent: "center", paddingLeft: 10, alignItems: "left", backgroundColor: "white", width: 300, height: 30, borderRadius: 10}}>
-          <TextInput
-            placeholder = "Tag number"
-            keyboardType = "number-pad"
-            underlineColorAndroid = "transparent"
-          />
-        </View>
-
-        <View style={{marginLeft: 60, marginBottom: 20, justifyContent: "center", paddingLeft: 10, alignItems: "left", backgroundColor: "white", width: 300, height: 30, borderRadius: 10}}>
-          <TextInput
-            placeholder = "Password"
-            keyboardType = "default"
-            underlineColorAndroid = "transparent"
-          />
-        </View>
-        <View style={{justifyContent: "center", alignItems: "center"}}>
-        <TouchableHighlight
-          onPress={() => props.navigation.navigate("MyStat")}
+        <View
           style={{
-            backgroundColor: "#7A9A7E",
-            borderRadius: 10,
+            marginTop: 10,
+            marginLeft: 60,
+            marginBottom: 10,
+            justifyContent: "center",
+            paddingLeft: 10,
+            alignItems: "flex-start",
+            backgroundColor: "white",
             width: 300,
-            alignItems: "center"
+            height: 30,
+            borderRadius: 10
           }}
+        >
+          <TextInput
+            placeholder="Tag number"
+            keyboardType="number-pad"
+            underlineColorAndroid="transparent"
+          />
+        </View>
+
+        <View
+          style={{
+            marginLeft: 60,
+            marginBottom: 20,
+            justifyContent: "center",
+            paddingLeft: 10,
+            alignItems: "flex-start",
+            backgroundColor: "white",
+            width: 300,
+            height: 30,
+            borderRadius: 10
+          }}
+        >
+          <TextInput
+            placeholder="Password"
+            keyboardType="default"
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <TouchableHighlight
+            onPress={() => props.navigation.navigate("MyStat")}
+            style={{
+              backgroundColor: "#7A9A7E",
+              borderRadius: 10,
+              width: 300,
+              alignItems: "center"
+            }}
           >
             <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
         </View>
 
         <View>
-          <Text style={{marginTop: 20, textAlign: "center", color: "white"}}>Forgot password?</Text>
+          <Text style={{ marginTop: 20, textAlign: "center", color: "white" }}>
+            Forgot password?
+          </Text>
         </View>
-
-        </ScrollView>
+      </ScrollView>
     </View>
   );
 }
 
 SignInScreen.navigationOptions = {
-  header: null,
+  header: null
 };
 
 function DevelopmentModeNotice() {
@@ -225,6 +274,5 @@ const styles = StyleSheet.create({
     marginTop: 50,
     width: 150,
     height: 150
-  },
-
+  }
 });
