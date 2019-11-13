@@ -137,8 +137,18 @@ const tabNavigator = createBottomTabNavigator({
   LearnMoreStack,
   AboutStack,
   MyStatStack
-  //SettingsStack
-});
+  //SettingsStack}
+  },
+  { tabBarOptions: {
+  activeTintColor: '#009245',
+  labelStyle: {
+    fontSize: 14,
+  },
+  style: {
+    backgroundColor: 'white',
+  },
+}}
+);
 
 tabNavigator.path = "";
 

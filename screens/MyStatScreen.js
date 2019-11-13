@@ -98,10 +98,12 @@ export default function SignInScreen(props) {
               {"Welcome User"}
             </Text>
           </View>
+          
+          
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
-                color: "#6E6E6E",
+                //color: "#6E6E6E",
                 fontSize: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
@@ -110,38 +112,55 @@ export default function SignInScreen(props) {
             >
               Throw trash
             </Text>
+
+            
             <Text
               style={{
                 fontSize: 14,
+                paddingBottom: 15,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                color: "#6E6E6E"
+                //color: "#6E6E6E"
               }}
             >
-              To register thrown trash, just press the '+' sign below the
-              correct trash type.
+              To register thrown trash press the '+'.
             </Text>
-          </View>
-          <View style={styles.throwThrashContainer}>
-            <Text
+
+
+
+            <View 
               style={{
-                color: "white",
-                fontSize: 20,
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingTop: 30,
-                paddingLeft: 20
-              }}
-            >
-              {"My stats"}
-            </Text>
-            <Text>Plastic: {countPlastic}</Text>
-            <Text>Paper: {countPaper}</Text>
-            <Text>Rest: {countRest}</Text>
+                
+                }}>
+              <Text >Plastic</Text>
+              <Text>Paper</Text>
+              <Text>Rest</Text>
+            </View>
+
+            <View 
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
+                }}>
+              <Text>{countPlastic}</Text>
+              <Text>{countPaper}</Text>
+              <Text>{countRest}</Text>
+            </View>
+
             <VictoryChart style={styles.barChart} width={350} height={300}>
-              <VictoryBar data={data} x="type" y="trashbags" />
+              <VictoryBar animate={{duration: 2000, onLoad: {duration: 1000}}} style={{data: {fill: '#A5C9A9', stroke: 'black', strokeWidth: 2 }}} data={data} x="type" y="trashbags" />
             </VictoryChart>
           </View>
+
+
 
           <View style={styles.buttonsContainer}>
             <View>
@@ -152,10 +171,10 @@ export default function SignInScreen(props) {
 
               <TouchableHighlight
                 style={{
-                  height: 50,
+                  height: 30,
                   width: 100,
                   borderRadius: 20,
-                  backgroundColor: "#7A9A7E",
+                  backgroundColor: "#009245",
                   flex: 1,
 
                   justifyContent: "center",
@@ -163,7 +182,7 @@ export default function SignInScreen(props) {
                 }}
                 onPress={() => incrementTrash("plastic")}
               >
-                <Text style={{ fontSize: 40 }}>+</Text>
+                <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
             <View>
@@ -173,17 +192,17 @@ export default function SignInScreen(props) {
               />
               <TouchableHighlight
                 style={{
-                  height: 50,
+                  height: 30,
                   width: 100,
                   borderRadius: 20,
-                  backgroundColor: "#7A9A7E",
+                  backgroundColor: "#009245",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"
                 }}
                 onPress={() => incrementTrash("paper")}
               >
-                <Text style={{ fontSize: 40 }}>+</Text>
+                <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
             <View>
@@ -193,31 +212,21 @@ export default function SignInScreen(props) {
               />
               <TouchableHighlight
                 style={{
-                  height: 50,
+                  height: 30,
                   width: 100,
                   borderRadius: 20,
-                  backgroundColor: "#7A9A7E",
+                  backgroundColor: "#009245",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"
                 }}
                 onPress={() => incrementTrash("rest")}
               >
-                <Text style={{ fontSize: 40 }}>+</Text>
+                <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
           </View>
-          <View style={{ alignItems: "center", marginTop: 20 }}>
-            <TouchableHighlight
-              onPress={() => props.navigation.navigate("About")}
-              style={{
-                backgroundColor: "#7A9A7E",
-                width: 100
-              }}
-            >
-              <Text style={{ color: "white", padding: 10 }}>About us</Text>
-            </TouchableHighlight>
-          </View>
+          
         </ScrollView>
       </View>
     </ImageBackground>
@@ -336,11 +345,17 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonsContainer: {
+    backgroundColor: '#A5C9A9',
+    opacity: 0.82,
     marginTop: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10,
+    padding: 10,
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "space-around"
   },
   helpLink: {
     paddingVertical: 15
@@ -350,7 +365,7 @@ const styles = StyleSheet.create({
     color: "#2e78b7"
   },
   incrementButtonImage: {
-    marginTop: 50,
+    marginTop: 5,
     width: 100,
     height: 100
   },
@@ -362,7 +377,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginLeft: 20,
     marginRight: 20,
-    opacity: 0.82,
+    opacity: 0.9,
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,

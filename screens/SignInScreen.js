@@ -24,7 +24,7 @@ export default function SignInScreen(props) {
       >
         <View style={styles.welcomeContainer}>
           <Image
-            source={require("../assets/images/waste-logo.png")}
+            source={require("../assets/images/logo.png")}
             style={styles.incrementButtonImage}
           />
         </View>
@@ -114,21 +114,29 @@ export default function SignInScreen(props) {
           <TouchableHighlight
             onPress={() => props.navigation.navigate("MyStat")}
             style={{
-              backgroundColor: "#7A9A7E",
+              //backgroundColor: "#7A9A7E",
+              backgroundColor: "#009245",
+              //backgroundColor: "#009966",
+              //backgroundColor: "#009933",
+              //backgroundColor: "#339933",
               borderRadius: 10,
               width: 300,
-              alignItems: "center"
+              alignItems: "center",
+              flex: 1,
+              justifyContent: 'flex-end',
+              marginBottom: 0
             }}
           >
             <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
         </View>
-
-        <View>
-          <Text style={{ marginTop: 20, textAlign: "center", color: "white" }}>
+        
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ marginTop: 20, textAlign: "center", color: "white"}}>
             Forgot password?
           </Text>
         </View>
+
       </ScrollView>
     </View>
   );
