@@ -17,10 +17,9 @@ import {
 } from "victory-native";
 
 const data = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 }
+  { quarter: 1, earnings: 13000, fill: '#009245' },
+  { quarter: 2, earnings: 16500, fill: '#33CC66' },
+  { quarter: 3, earnings: 14250, fill: '#66FF66' }
 ];
 
 export default function GeneralInfoScreen() {
@@ -50,33 +49,76 @@ export default function GeneralInfoScreen() {
           </Text>
         </View>
 
-        <View style={styles.aboutContainer}>
-          <Text
-            style={{
-              fontSize: 20,
-              paddingBottom: 10,
-              fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
-            }}
-          >
-            Waste Details
-          </Text>
+        <View style={styles.throwThrashContainer}>
+            <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                fontWeight: 'bold'
+              }}
+            >
+              Thrown trash in SRS - November
+            </Text>
 
-          <VictoryChart style={styles.barChart} width={350} height={300}>
-            <VictoryBar data={data} x="quarter" y="earnings" />
-          </VictoryChart>
-        </View>
+            
+            <Text
+              style={{
+                fontSize: 14,
+                paddingBottom: 15,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                //color: "#6E6E6E"
+              }}
+            >
+              TEXT
+            </Text>
 
-        <View style={styles.aboutContainer}>
-          <VictoryPie
-            colorScale={["#008f68", "#6DB65B", "#4AAE9B", "#EFBB35"]}
-            data={[
-              { x: "Restavfall", y: 1234 },
-              { x: "Tidningar", y: 3048 },
-              { x: "Plast", y: 2600 }
-            ]}
-          />
+            <View 
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 5
+                }}>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}} >Plastic</Text>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Paper</Text>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Rest</Text>
+            </View>
+
+            <VictoryChart domainPadding={17} width={350} height={300}>
+              <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="quarter" y="earnings" />
+            </VictoryChart>
+          </View>
+
+
+        <View style={styles.throwThrashContainer}>
+        <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                fontWeight: 'bold'
+              }}
+            >
+              Thrown trash in SRS - November
+            </Text>
+
+          
+            <VictoryPie domainPadding={17} width={350} height={300} 
+              colorScale={["#008f68", "#6DB65B", "#4AAE9B", "#EFBB35"]}
+              data={[
+                { x: "Restavfall", y: 1234 },
+                { x: "Tidningar", y: 3048 },
+                { x: "Plast", y: 2600 }
+              ]}
+            />
         </View>
       </ScrollView>
     </ImageBackground>
@@ -103,5 +145,16 @@ const styles = StyleSheet.create({
   },
   barchart: {
     alignItems: "center"
+  },
+  throwThrashContainer: {
+    backgroundColor: "#fff",
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    opacity: 0.9,
+    //paddingTop: 20,
+    //paddingBottom: 20,
+    padding: 20,
+    borderRadius: 10
   }
 });

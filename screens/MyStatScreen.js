@@ -28,9 +28,9 @@ export default function SignInScreen(props) {
   const [countRest, setRest] = useState(0);
 
   const data = [
-    { type: "plastic", trashbags: countPlastic },
-    { type: "paper", trashbags: countPaper },
-    { type: "rest", trashbags: countRest }
+    { type: "plastic", trashbags: countPlastic, fill: '#009245' },
+    { type: "paper", trashbags: countPaper, fill: '#33CC66' },
+    { type: "rest", trashbags: countRest, fill: '#66FF66' }
   ];
 
   checkIfAchievementUnlocked = () => {
@@ -107,10 +107,11 @@ export default function SignInScreen(props) {
                 fontSize: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 10
+                paddingBottom: 10,
+                fontWeight: 'bold'
               }}
             >
-              Throw trash
+              My thrown trash - November
             </Text>
 
             
@@ -123,7 +124,7 @@ export default function SignInScreen(props) {
                 //color: "#6E6E6E"
               }}
             >
-              To register thrown trash press the '+'.
+              To register thrown trash press the '+' for the correct trash type.
             </Text>
 
 
@@ -135,11 +136,11 @@ export default function SignInScreen(props) {
                 justifyContent: 'space-around',
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                
+                paddingBottom: 5
                 }}>
-              <Text >Plastic</Text>
-              <Text>Paper</Text>
-              <Text>Rest</Text>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}} >Plastic</Text>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Paper</Text>
+              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Rest</Text>
             </View>
 
             <View 
@@ -150,30 +151,32 @@ export default function SignInScreen(props) {
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
                 }}>
-              <Text>{countPlastic}</Text>
-              <Text>{countPaper}</Text>
-              <Text>{countRest}</Text>
+              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countPlastic}</Text>
+              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countPaper}</Text>
+              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countRest}</Text>
             </View>
 
-            <VictoryChart style={styles.barChart} width={350} height={300}>
-              <VictoryBar animate={{duration: 2000, onLoad: {duration: 1000}}} style={{data: {fill: '#A5C9A9', stroke: 'black', strokeWidth: 2 }}} data={data} x="type" y="trashbags" />
+            <VictoryChart domainPadding={17} width={350} height={300}>
+              <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="type" y="trashbags" />
             </VictoryChart>
           </View>
 
 
 
           <View style={styles.buttonsContainer}>
-            <View>
-              <Image
-                style={styles.incrementButtonImage}
-                source={require("../assets/images/trash-bin.png")}
-              />
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{paddingBottom: 5}}>
+                <Image
+                  style={styles.incrementButtonImage}
+                  source={require("../assets/images/recycled-plastic-bag.png")}
+                />
+              </View>
 
               <TouchableHighlight
                 style={{
                   height: 30,
                   width: 100,
-                  borderRadius: 20,
+                  borderRadius: 10,
                   backgroundColor: "#009245",
                   flex: 1,
 
@@ -185,17 +188,20 @@ export default function SignInScreen(props) {
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
-            <View>
-              <Image
-                style={styles.incrementButtonImage}
-                source={require("../assets/images/trash-bin.png")}
-              />
+
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{paddingBottom: 5}}>
+                <Image
+                  style={styles.incrementButtonImage}
+                  source={require("../assets/images/recycled-paper.png")}
+                />
+              </View>
               <TouchableHighlight
                 style={{
                   height: 30,
                   width: 100,
-                  borderRadius: 20,
-                  backgroundColor: "#009245",
+                  borderRadius: 10,
+                  backgroundColor: "#33CC66",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"
@@ -205,17 +211,20 @@ export default function SignInScreen(props) {
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
-            <View>
-              <Image
-                style={styles.incrementButtonImage}
-                source={require("../assets/images/trash-bin.png")}
-              />
+
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{paddingBottom: 5}}>
+                <Image
+                  style={styles.incrementButtonImage}
+                  source={require("../assets/images/recycled-bin.png")}
+                />
+              </View>
               <TouchableHighlight
                 style={{
                   height: 30,
                   width: 100,
-                  borderRadius: 20,
-                  backgroundColor: "#009245",
+                  borderRadius: 10,
+                  backgroundColor: "#66FF66",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"
@@ -366,8 +375,10 @@ const styles = StyleSheet.create({
   },
   incrementButtonImage: {
     marginTop: 5,
-    width: 100,
-    height: 100
+    width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   loginContainer: {
     justifyContent: "center",
@@ -375,13 +386,13 @@ const styles = StyleSheet.create({
   },
   throwThrashContainer: {
     backgroundColor: "#fff",
+    marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
     opacity: 0.9,
-    paddingTop: 20,
-    paddingBottom: 20,
+    //paddingTop: 20,
+    //paddingBottom: 20,
     padding: 20,
-    marginTop: 30,
     borderRadius: 10
   }
 });
