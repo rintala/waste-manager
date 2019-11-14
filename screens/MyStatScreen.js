@@ -117,6 +117,7 @@ export default function SignInScreen(props) {
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
+                paddingLeft: 20,
                 fontWeight: 'bold'
               }}
             >
@@ -128,6 +129,7 @@ export default function SignInScreen(props) {
               style={{
                 fontSize: 14,
                 paddingBottom: 15,
+                paddingLeft: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 //color: "#6E6E6E"
@@ -165,7 +167,7 @@ export default function SignInScreen(props) {
               <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countRest}</Text>
             </View>
 
-            <VictoryChart domain={{y: [0, 1]}} domainPadding={17} width={350} height={300}>
+            <VictoryChart domainPadding={17} width={350} height={300}>
               <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="type" y="trashbags" />
             </VictoryChart>
           </View>
@@ -399,9 +401,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     opacity: 0.9,
-    //paddingTop: 20,
+    paddingTop: 20,
     //paddingBottom: 20,
-    padding: 20,
+    //padding: 20,
     borderRadius: 10
   }
 });
