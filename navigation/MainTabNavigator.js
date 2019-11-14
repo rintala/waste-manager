@@ -134,8 +134,8 @@ const tabNavigator = createBottomTabNavigator(
     SignInStack,
     GeneralInfoStack,
     LearnMoreStack,
-    AboutStack,
-    MyStatStack
+    AboutStack
+    /* MyStatStack */
     //SettingsStack}
   },
   {
