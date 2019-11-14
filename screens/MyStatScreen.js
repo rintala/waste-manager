@@ -1,5 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import React, { useState, useEffect } from "react";
+import { ConfettiCannon } from 'react-native-confetti-cannon';
 import {
   Image,
   Platform,
@@ -22,6 +23,8 @@ import {
   VictoryTheme
 } from "victory-native";
 
+
+
 export default function SignInScreen(props) {
   const [countPlastic, setPlastic] = useState(0);
   const [countPaper, setPaper] = useState(0);
@@ -43,6 +46,7 @@ export default function SignInScreen(props) {
         message: "Great job"
       };
       isAchieved = true;
+
     }
 
     return [isAchieved, achievement];
@@ -65,6 +69,9 @@ export default function SignInScreen(props) {
     const [isAchievementUnlocked, achievement] = checkIfAchievementUnlocked();
 
     if (isAchievementUnlocked) {
+
+                
+    
       Alert.alert(
         "Level: " + "" + achievement.level,
         "Message: " + achievement.message
@@ -82,7 +89,8 @@ export default function SignInScreen(props) {
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
-        >
+        > 
+
           <View>
             <Text
               style={{
@@ -97,6 +105,7 @@ export default function SignInScreen(props) {
             >
               {"Welcome User"}
             </Text>
+            
           </View>
           
           
@@ -156,7 +165,7 @@ export default function SignInScreen(props) {
               <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countRest}</Text>
             </View>
 
-            <VictoryChart domainPadding={17} width={350} height={300}>
+            <VictoryChart domain={{y: [0, 1]}} domainPadding={17} width={350} height={300}>
               <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="type" y="trashbags" />
             </VictoryChart>
           </View>
