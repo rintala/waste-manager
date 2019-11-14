@@ -1,5 +1,5 @@
 import * as WebBrowser from "expo-web-browser";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Platform,
@@ -13,10 +13,14 @@ import {
   TextInput
 } from "react-native";
 
+import MyStatScreen from "./MyStatScreen";
+
 import { MonoText } from "../components/StyledText";
 
 export default function SignInScreen(props) {
-  return (
+  [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const SignInContent = (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
@@ -112,7 +116,7 @@ export default function SignInScreen(props) {
         </View>
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <TouchableHighlight
-            onPress={() => props.navigation.navigate("MyStat")}
+            onPress={() => setIsLoggedIn(true)}
             style={{
               //backgroundColor: "#7A9A7E",
               backgroundColor: "#009245",
@@ -123,23 +127,24 @@ export default function SignInScreen(props) {
               width: 300,
               alignItems: "center",
               flex: 1,
-              justifyContent: 'flex-end',
+              justifyContent: "flex-end",
               marginBottom: 0
             }}
           >
             <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
         </View>
-        
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ marginTop: 20, textAlign: "center", color: "white"}}>
+
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <Text style={{ marginTop: 20, textAlign: "center", color: "white" }}>
             Forgot password?
           </Text>
         </View>
-
       </ScrollView>
     </View>
   );
+
+  return !isLoggedIn ? SignInContent : <MyStatScreen />;
 }
 
 SignInScreen.navigationOptions = {

@@ -32,9 +32,7 @@ SignInStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === "ios"
-          ? `ios-person${focused ? "" : "-outline"}`
-          : "md-person"
+        Platform.OS === "ios" ? `ios-person${focused ? "" : ""}` : "md-person"
       }
     />
   )
@@ -131,23 +129,26 @@ MyStatStack.navigationOptions = {
 
 MyStatStack.path = "";
 
-const tabNavigator = createBottomTabNavigator({
-  SignInStack,
-  GeneralInfoStack,
-  LearnMoreStack,
-  AboutStack,
-  MyStatStack
-  //SettingsStack}
+const tabNavigator = createBottomTabNavigator(
+  {
+    SignInStack,
+    GeneralInfoStack,
+    LearnMoreStack,
+    AboutStack,
+    MyStatStack
+    //SettingsStack}
   },
-  { tabBarOptions: {
-  activeTintColor: '#009245',
-  labelStyle: {
-    fontSize: 14,
-  },
-  style: {
-    backgroundColor: 'white',
-  },
-}}
+  {
+    tabBarOptions: {
+      activeTintColor: "#009245",
+      labelStyle: {
+        fontSize: 14
+      },
+      style: {
+        backgroundColor: "white"
+      }
+    }
+  }
 );
 
 tabNavigator.path = "";
