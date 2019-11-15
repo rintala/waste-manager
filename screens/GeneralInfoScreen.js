@@ -88,11 +88,12 @@ export default function GeneralInfoScreen() {
           </View>
 
 
-        <View style={styles.throwThrashContainer}>
+        <View style={styles.throwThrashContainerGreen}>
         <Text
               style={{
                 //color: "#6E6E6E",
                 fontSize: 20,
+                color: 'white',
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
@@ -104,7 +105,7 @@ export default function GeneralInfoScreen() {
             </Text>
 
           
-            <VictoryPie domainPadding={17} width={350} height={300} 
+            <VictoryPie domainPadding={17} width={350} height={300}
               colorScale={["#008f68", "#6DB65B", "#4AAE9B", "#EFBB35"]}
               data={[
                 { x: "Restavfall", y: 1234 },
@@ -141,6 +142,18 @@ const styles = StyleSheet.create({
   },
   throwThrashContainer: {
     backgroundColor: "#fff",
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    opacity: 0.9,
+    paddingTop: 20,
+    
+    //paddingBottom: 20,
+    //padding: 20,
+    borderRadius: 10
+  },
+  throwThrashContainerGreen: {
+    backgroundColor: "#A5C9A9",
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
