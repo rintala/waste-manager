@@ -80,9 +80,9 @@ export default function GeneralInfoScreen() {
 
 
             <VictoryChart domainPadding={17} width={350} height={300}>
-              <VictoryLine style={{data: {stroke: "#008f68"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 3},{x: 'Feb', y: 4},{x: 'Mar', y: 3},{x: 'Apr', y: 5},{x: 'May', y: 2}]} />
-              <VictoryLine style={{data: {stroke: "#6DB65B"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 4},{x: 'Feb', y: 6},{x: 'Mar', y: 4},{x: 'Apr', y: 2},{x: 'May', y: 3}]} />
-              <VictoryLine style={{data: {stroke: "#4AAE9B"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 2},{x: 'Feb', y: 3},{x: 'Mar', y: 2},{x: 'Apr', y: 3},{x: 'May', y: 5}]} />
+              <VictoryLine style={{data: {stroke: "#009245"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 3},{x: 'Feb', y: 4},{x: 'Mar', y: 3},{x: 'Apr', y: 5},{x: 'May', y: 2}]} />
+              <VictoryLine style={{data: {stroke: "#33CC66"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 4},{x: 'Feb', y: 6},{x: 'Mar', y: 4},{x: 'Apr', y: 2},{x: 'May', y: 3}]} />
+              <VictoryLine style={{data: {stroke: "#66FF66"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 2},{x: 'Feb', y: 3},{x: 'Mar', y: 2},{x: 'Apr', y: 3},{x: 'May', y: 5}]} />
               <VictoryLine style={{data: {stroke: "black"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 9},{x: 'Feb', y: 13},{x: 'Mar', y: 9},{x: 'Apr', y: 10},{x: 'May', y: 10}]} />
             </VictoryChart>
           </View>
@@ -106,7 +106,7 @@ export default function GeneralInfoScreen() {
 
           
             <VictoryPie domainPadding={17} width={350} height={300}
-              colorScale={["#008f68", "#6DB65B", "#4AAE9B", "#EFBB35"]}
+              colorScale={["#009245", "#33CC66", "#66FF66"]}
               data={[
                 { x: "Restavfall", y: 1234 },
                 { x: "Tidningar", y: 3048 },
