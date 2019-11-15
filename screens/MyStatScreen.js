@@ -31,9 +31,9 @@ export default function SignInScreen(props) {
   const [countRest, setRest] = useState(0);
 
   const data = [
-    { type: "plastic", trashbags: countPlastic, fill: '#009245' },
-    { type: "paper", trashbags: countPaper, fill: '#33CC66' },
-    { type: "rest", trashbags: countRest, fill: '#66FF66' }
+    { type: "plastic", trashbags: countPlastic, fill: '#4AAE9B' },
+    { type: "paper", trashbags: countPaper, fill: '#6DB65B' },
+    { type: "rest", trashbags: countRest, fill: '#008f68' }
   ];
 
   checkIfAchievementUnlocked = () => {
@@ -179,7 +179,7 @@ export default function SignInScreen(props) {
               <View style={{paddingBottom: 5}}>
                 <Image
                   style={styles.incrementButtonImage}
-                  source={require("../assets/images/recycled-plastic-bag.png")}
+                  source={require("../assets/images/recycled-plastic-2.png")}
                 />
               </View>
 
@@ -188,7 +188,7 @@ export default function SignInScreen(props) {
                   height: 30,
                   width: 100,
                   borderRadius: 10,
-                  backgroundColor: "#009245",
+                  backgroundColor: "#4AAE9B",
                   flex: 1,
 
                   justifyContent: "center",
@@ -204,7 +204,7 @@ export default function SignInScreen(props) {
               <View style={{paddingBottom: 5}}>
                 <Image
                   style={styles.incrementButtonImage}
-                  source={require("../assets/images/recycled-paper.png")}
+                  source={require("../assets/images/recycled-paper-2.png")}
                 />
               </View>
               <TouchableHighlight
@@ -212,7 +212,7 @@ export default function SignInScreen(props) {
                   height: 30,
                   width: 100,
                   borderRadius: 10,
-                  backgroundColor: "#33CC66",
+                  backgroundColor: "#6DB65B",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"
@@ -227,7 +227,7 @@ export default function SignInScreen(props) {
               <View style={{paddingBottom: 5}}>
                 <Image
                   style={styles.incrementButtonImage}
-                  source={require("../assets/images/recycled-bin.png")}
+                  source={require("../assets/images/recycled-rest-3.png")}
                 />
               </View>
               <TouchableHighlight
@@ -235,7 +235,7 @@ export default function SignInScreen(props) {
                   height: 30,
                   width: 100,
                   borderRadius: 10,
-                  backgroundColor: "#66FF66",
+                  backgroundColor: "#008f68",
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center"

@@ -57,6 +57,7 @@ export default function GeneralInfoScreen() {
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
+                paddingLeft: 20,
                 fontWeight: 'bold'
               }}
             >
@@ -67,31 +68,22 @@ export default function GeneralInfoScreen() {
             <Text
               style={{
                 fontSize: 14,
-                paddingBottom: 15,
+                paddingBottom: 5,
+                paddingLeft: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 //color: "#6E6E6E"
               }}
             >
-              TEXT
+              Total amount of trash thrown, includes plastic, paper and rest.
             </Text>
 
-            <View 
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 5
-                }}>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}} >Plastic</Text>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Paper</Text>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Rest</Text>
-            </View>
 
             <VictoryChart domainPadding={17} width={350} height={300}>
-              <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="quarter" y="earnings" />
+              <VictoryLine style={{data: {stroke: "#008f68"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 3},{x: 'Feb', y: 4},{x: 'Mar', y: 3},{x: 'Apr', y: 5},{x: 'May', y: 2}]} />
+              <VictoryLine style={{data: {stroke: "#6DB65B"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 4},{x: 'Feb', y: 6},{x: 'Mar', y: 4},{x: 'Apr', y: 2},{x: 'May', y: 3}]} />
+              <VictoryLine style={{data: {stroke: "#4AAE9B"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 2},{x: 'Feb', y: 3},{x: 'Mar', y: 2},{x: 'Apr', y: 3},{x: 'May', y: 5}]} />
+              <VictoryLine style={{data: {stroke: "black"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 9},{x: 'Feb', y: 13},{x: 'Mar', y: 9},{x: 'Apr', y: 10},{x: 'May', y: 10}]} />
             </VictoryChart>
           </View>
 
@@ -104,6 +96,7 @@ export default function GeneralInfoScreen() {
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
+                paddingLeft: 20,
                 fontWeight: 'bold'
               }}
             >
@@ -152,9 +145,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     opacity: 0.9,
-    //paddingTop: 20,
+    paddingTop: 20,
+    
     //paddingBottom: 20,
-    padding: 20,
+    //padding: 20,
     borderRadius: 10
   }
 });
