@@ -1,6 +1,10 @@
 import * as WebBrowser from "expo-web-browser";
 import React, { useState, useEffect } from "react";
 import { ConfettiCannon } from 'react-native-confetti-cannon';
+//import { Confetti } from "native-confetti";
+import Confetti from 'react-dom-confetti';
+import LottieView from 'lottie-react-native';
+
 import {
   Image,
   Platform,
@@ -70,8 +74,6 @@ export default function SignInScreen(props) {
 
     if (isAchievementUnlocked) {
 
-                
-    
       Alert.alert(
         "Level: " + "" + achievement.level,
         "Message: " + achievement.message
@@ -81,6 +83,7 @@ export default function SignInScreen(props) {
     [countPlastic, countPaper, countRest];
 
   return (
+
     <ImageBackground
       source={require("../assets/images/background-green.png")}
       style={{ width: "100%", height: "100%" }}
@@ -178,7 +181,7 @@ export default function SignInScreen(props) {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <View style={{paddingBottom: 5}}>
                 <Image
-                  style={styles.incrementButtonImage}
+                  style={{marginTop: 5, width: 60, height: 60, marginBottom: 10}}
                   source={require("../assets/images/recycled-plastic-2.png")}
                 />
               </View>
@@ -203,7 +206,7 @@ export default function SignInScreen(props) {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <View style={{paddingBottom: 5}}>
                 <Image
-                  style={styles.incrementButtonImage}
+                  style={{marginTop: 5, width: 60, height: 70}}
                   source={require("../assets/images/recycled-paper-2.png")}
                 />
               </View>
@@ -226,8 +229,8 @@ export default function SignInScreen(props) {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <View style={{paddingBottom: 5}}>
                 <Image
-                  style={styles.incrementButtonImage}
-                  source={require("../assets/images/recycled-rest-3.png")}
+                  style={{marginTop: 5, width: 80, height: 50, marginBottom: 10, marginTop: 10}}
+                  source={require("../assets/images/recycled-rest-4.png")}
                 />
               </View>
               <TouchableHighlight
@@ -248,6 +251,7 @@ export default function SignInScreen(props) {
           </View>
           
         </ScrollView>
+        
       </View>
     </ImageBackground>
   );
@@ -386,10 +390,10 @@ const styles = StyleSheet.create({
   },
   incrementButtonImage: {
     marginTop: 5,
-    width: 80,
+    width: 100,
     height: 80,
-    justifyContent: 'center',
-    alignItems: 'center'
+    //justifyContent: 'center',
+    //alignItems: 'center'
   },
   loginContainer: {
     justifyContent: "center",

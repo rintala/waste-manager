@@ -40,7 +40,7 @@ export default function GeneralInfoScreen() {
               fontSize: 30,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              paddingTop: 30,
+              paddingTop: 15,
               paddingLeft: 20,
               textDecorationLine: "underline"
             }}
