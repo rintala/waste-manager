@@ -106,7 +106,7 @@ export default function SignInScreen(props) {
                 textDecorationLine: "underline"
               }}
             >
-              {"Welcome User"}
+              Welcome User
             </Text>
             
           </View>
@@ -121,7 +121,8 @@ export default function SignInScreen(props) {
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
                 paddingLeft: 20,
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                //color: "#6E6E6E"
               }}
             >
               My thrown trash - November
