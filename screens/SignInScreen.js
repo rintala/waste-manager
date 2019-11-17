@@ -91,6 +91,7 @@ export default function SignInScreen(props) {
           <TextInput
             placeholder="Tag number"
             keyboardType="number-pad"
+            width={300}
             underlineColorAndroid="transparent"
           />
         </View>
@@ -111,6 +112,8 @@ export default function SignInScreen(props) {
           <TextInput
             placeholder="Password"
             keyboardType="default"
+            secureTextEntry={true}
+            width={300}
             underlineColorAndroid="transparent"
           />
         </View>
