@@ -33,6 +33,7 @@ export default function SignInScreen(props) {
   const [countPlastic, setPlastic] = useState(0);
   const [countPaper, setPaper] = useState(0);
   const [countRest, setRest] = useState(0);
+  [isLoggedOut, setIsLoggedOut] = useState(false);
 
   const data = [
     { type: "plastic", trashbags: countPlastic, fill: '#009245' },
@@ -82,7 +83,7 @@ export default function SignInScreen(props) {
   }),
     [countPlastic, countPaper, countRest];
 
-  return (
+  const MyStatContent = (
 
     <ImageBackground
       source={require("../assets/images/background-green.png")}
@@ -249,13 +250,98 @@ export default function SignInScreen(props) {
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
+
           </View>
+
+
+          <View style={styles.dateContainer}>
+              
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <TouchableHighlight
+                style={{
+                  //backgroundColor: "white",
+                  //backgroundColor: "#009245",
+                  borderRadius: 10,
+                  marginTop: 5,
+                  //width: 90,
+                  alignItems: "center",
+                  flex: 1,
+                  justifyContent: "space-around",
+                  marginBottom: 0
+                }}
+              >
+                <Text style={{ color: "white", padding: 10 }}>Week</Text>
+              </TouchableHighlight>
+            </View>
+
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <TouchableHighlight
+                style={{
+                  backgroundColor: "white",
+                  //backgroundColor: "#009245",
+                  borderRadius: 10,
+                  marginTop: 5,
+                  width: 90,
+                  alignItems: "center",
+                  flex: 1,
+                  justifyContent: "space-around",
+                  marginBottom: 0,
+                }}
+              >
+                <Text style={{ color: "#A5C9A9", fontWeight: 'bold', padding: 10 }}>Month</Text>
+              </TouchableHighlight>
+              </View>
+
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <TouchableHighlight
+                style={{
+                  //backgroundColor: "white",
+                  //backgroundColor: "#009245",
+                  borderRadius: 10,
+                  marginTop: 5,
+                  //width: 90,
+                  alignItems: "center",
+                  flex: 1,
+                  justifyContent: "space-around",
+                  marginBottom: 0
+                }}
+              >
+                <Text style={{ color: "white", padding: 10 }}>Year</Text>
+              </TouchableHighlight>
+            </View>
+
+          </View>
+
+
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <TouchableHighlight
+              onPress={() => setIsLoggedOut(true)}
+              style={{
+                backgroundColor: "white",
+                opacity: 0.9,
+                //backgroundColor: "#009245",
+                borderRadius: 10,
+                marginTop: 20,
+                width: 375,
+                alignItems: "center",
+                flex: 1,
+                justifyContent: "flex-end",
+                marginBottom: 0
+              }}
+            >
+              <Text style={{ color: "#A5C9A9", fontWeight: 'bold', padding: 10 }}>Log out</Text>
+            </TouchableHighlight>
+          </View>
+
           
         </ScrollView>
         
       </View>
     </ImageBackground>
   );
+
+  return !isLoggedOut ? MyStatContent : <SignInScreen />;
+
 }
 
 SignInScreen.navigationOptions = {
@@ -314,7 +400,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     backgroundColor: 'white',
-    opacity: 0.82,
+    opacity: 0.9,
     marginTop: 15,
     marginLeft: 20,
     marginRight: 20,
@@ -331,7 +417,7 @@ const styles = StyleSheet.create({
   },
   throwThrashContainer: {
     backgroundColor: "#A5C9A9",
-    marginTop: 30,
+    marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
     opacity: 0.9,
@@ -339,5 +425,18 @@ const styles = StyleSheet.create({
     //paddingBottom: 20,
     //padding: 20,
     borderRadius: 10
-  }
+  },
+  dateContainer: {
+    backgroundColor: '#A5C9A9',
+    opacity: 0.9,
+    marginTop: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10,
+    padding: 10,
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
 });
