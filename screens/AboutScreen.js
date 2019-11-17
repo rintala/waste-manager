@@ -18,10 +18,6 @@ export default function AboutScreen() {
       style={{ width: "100%", height: "100%" }}
     >
       <ScrollView style={styles.container}>
-        {/**
-         * Go ahead and delete ExpoLinksView and replace it with your content;
-         * we just wanted to provide you with some helpful links.
-         */}
         <View>
           <Text
             style={{
@@ -48,11 +44,12 @@ export default function AboutScreen() {
               color: "#6E6E6E"
             }}
           >
-            {"KTH meets Stockholm Royal Seaport"}
+            KTH meets Stockholm Royal Seaport
           </Text>
           <Text
             style={{
               fontSize: 14,
+              color: "#6E6E6E",
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
             }}
@@ -62,9 +59,7 @@ export default function AboutScreen() {
             Technology. The prototype is developed by Edward Alpsten, Lukas
             Ekberg, Jonathan Rintala, Erik Skogetun and Sebastian Ståhl.
           </Text>
-          {/* <Image
-            source={require("../assets/images/us.png")}
-          /> */}
+
         </View>
       </ScrollView>
     </ImageBackground>
@@ -86,7 +81,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,
-    opacity: 0.82,
+    opacity: 0.9,
     marginTop: 30,
     borderRadius: 10
   }

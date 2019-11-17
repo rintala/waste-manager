@@ -45,14 +45,14 @@ export default function GeneralInfoScreen() {
               textDecorationLine: "underline"
             }}
           >
-            {"General information"}
+            General information
           </Text>
         </View>
 
         <View style={styles.throwThrashContainer}>
             <Text
               style={{
-                //color: "#6E6E6E",
+                color: "#6E6E6E",
                 fontSize: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
@@ -72,12 +72,11 @@ export default function GeneralInfoScreen() {
                 paddingLeft: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                //color: "#6E6E6E"
+                color: "#6E6E6E"
               }}
             >
               Total amount of trash thrown, includes plastic, paper and rest.
             </Text>
-
 
             <VictoryChart domainPadding={17} width={350} height={300}>
               <VictoryLine style={{data: {stroke: "#009245"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 3},{x: 'Feb', y: 4},{x: 'Mar', y: 3},{x: 'Apr', y: 5},{x: 'May', y: 2}]} />
@@ -128,18 +127,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15
   },
-  aboutContainer: {
-    backgroundColor: "#fff",
-
-    paddingTop: 20,
-    paddingBottom: 20,
-    padding: 20,
-    marginTop: 40,
-    opacity: 0.9
-  },
-  barchart: {
-    alignItems: "center"
-  },
   throwThrashContainer: {
     backgroundColor: "#fff",
     marginTop: 30,
@@ -147,7 +134,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     opacity: 0.9,
     paddingTop: 20,
-    
     //paddingBottom: 20,
     //padding: 20,
     borderRadius: 10
@@ -159,7 +145,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     opacity: 0.9,
     paddingTop: 20,
-    
     //paddingBottom: 20,
     //padding: 20,
     borderRadius: 10

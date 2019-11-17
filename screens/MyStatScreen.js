@@ -181,7 +181,7 @@ export default function SignInScreen(props) {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <View style={{paddingBottom: 5}}>
                 <Image
-                  style={{marginTop: 5, width: 60, height: 60, marginBottom: 10}}
+                  style={{marginTop: 5, width: 70, height: 70}}
                   source={require("../assets/images/recycled-plastic-2.png")}
                 />
               </View>
@@ -311,65 +311,8 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30
   },
-
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)"
-  },
-  codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  homeTitle: {
-    fontSize: 27,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center",
-    paddingVertical: 30
-  },
-  homeSubTitle: {
-    fontSize: 20,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center",
-    paddingVertical: 10,
-    fontStyle: "italic"
-  },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
   buttonsContainer: {
-    backgroundColor: '#A5C9A9',
+    backgroundColor: 'white',
     opacity: 0.82,
     marginTop: 15,
     marginLeft: 20,
@@ -381,26 +324,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around"
   },
-  helpLink: {
-    paddingVertical: 15
-  },
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
   },
-  incrementButtonImage: {
-    marginTop: 5,
-    width: 100,
-    height: 80,
-    //justifyContent: 'center',
-    //alignItems: 'center'
-  },
-  loginContainer: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
   throwThrashContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "#A5C9A9",
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,

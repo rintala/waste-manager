@@ -18,11 +18,6 @@ export default function LearnMoreScreen() {
       style={{ width: "100%", height: "100%" }}
     >
       <ScrollView style={styles.container}>
-        {/**
-         * Go ahead and delete ExpoLinksView and replace it with your content;
-         * we just wanted to provide you with some helpful links.
-         */}
-
         <View>
           <Text
             style={{
@@ -254,7 +249,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginLeft: 20,
     marginRight: 20,
-    opacity: 0.82,
+    opacity: 0.9,
     paddingTop: 20,
     paddingBottom: 20,
     padding: 20,
