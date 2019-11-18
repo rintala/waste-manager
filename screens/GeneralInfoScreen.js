@@ -17,9 +17,9 @@ import {
 } from "victory-native";
 
 const data = [
-  { quarter: 1, earnings: 13000, fill: '#009245' },
-  { quarter: 2, earnings: 16500, fill: '#33CC66' },
-  { quarter: 3, earnings: 14250, fill: '#66FF66' }
+  { quarter: 1, earnings: 13000, fill: "#009245" },
+  { quarter: 2, earnings: 16500, fill: "#33CC66" },
+  { quarter: 3, earnings: 14250, fill: "#66FF66" }
 ];
 
 export default function GeneralInfoScreen() {
@@ -50,68 +50,108 @@ export default function GeneralInfoScreen() {
         </View>
 
         <View style={styles.throwThrashContainer}>
-            <Text
-              style={{
-                color: "#6E6E6E",
-                fontSize: 20,
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 10,
-                paddingLeft: 20,
-                fontWeight: 'bold'
-              }}
-            >
-              Thrown trash in SRS - November
-            </Text>
+          <Text
+            style={{
+              color: "#6E6E6E",
+              fontSize: 20,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              paddingBottom: 10,
+              paddingLeft: 20,
+              fontWeight: "bold"
+            }}
+          >
+            Thrown trash in SRS - November
+          </Text>
 
-            
-            <Text
-              style={{
-                fontSize: 14,
-                paddingBottom: 5,
-                paddingLeft: 20,
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                color: "#6E6E6E"
-              }}
-            >
-              Total amount of trash thrown, includes plastic, paper and rest.
-            </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              paddingBottom: 5,
+              paddingLeft: 20,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              color: "#6E6E6E"
+            }}
+          >
+            Total amount of trash thrown, includes plastic, paper and rest.
+          </Text>
 
-            <VictoryChart domainPadding={17} width={350} height={300}>
-              <VictoryLine style={{data: {stroke: "#009245"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 3},{x: 'Feb', y: 4},{x: 'Mar', y: 3},{x: 'Apr', y: 5},{x: 'May', y: 2}]} />
-              <VictoryLine style={{data: {stroke: "#33CC66"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 4},{x: 'Feb', y: 6},{x: 'Mar', y: 4},{x: 'Apr', y: 2},{x: 'May', y: 3}]} />
-              <VictoryLine style={{data: {stroke: "#66FF66"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 2},{x: 'Feb', y: 3},{x: 'Mar', y: 2},{x: 'Apr', y: 3},{x: 'May', y: 5}]} />
-              <VictoryLine style={{data: {stroke: "black"}}} animate={{duration: 500, onStart: {duration: 1000}}} data={[ {x: 'Jan', y: 9},{x: 'Feb', y: 13},{x: 'Mar', y: 9},{x: 'Apr', y: 10},{x: 'May', y: 10}]} />
-            </VictoryChart>
-          </View>
-
-
-        <View style={styles.throwThrashContainerGreen}>
-        <Text
-              style={{
-                //color: "#6E6E6E",
-                fontSize: 20,
-                color: 'white',
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 10,
-                paddingLeft: 20,
-                fontWeight: 'bold'
-              }}
-            >
-              Thrown trash in SRS - November
-            </Text>
-
-          
-            <VictoryPie domainPadding={17} width={350} height={300}
-              colorScale={["#009245", "#33CC66", "#66FF66"]}
+          <VictoryChart domainPadding={17} width={350} height={300}>
+            <VictoryLine
+              style={{ data: { stroke: "#009245" } }}
+              /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */
               data={[
-                { x: "Restavfall", y: 1234 },
-                { x: "Tidningar", y: 3048 },
-                { x: "Plast", y: 2600 }
+                { x: "Jan", y: 3 },
+                { x: "Feb", y: 4 },
+                { x: "Mar", y: 3 },
+                { x: "Apr", y: 5 },
+                { x: "May", y: 2 }
               ]}
             />
+            <VictoryLine
+              style={{ data: { stroke: "#33CC66" } }}
+              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+              data={[
+                { x: "Jan", y: 4 },
+                { x: "Feb", y: 6 },
+                { x: "Mar", y: 4 },
+                { x: "Apr", y: 2 },
+                { x: "May", y: 3 }
+              ]}
+            />
+            <VictoryLine
+              style={{ data: { stroke: "#66FF66" } }}
+              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+              data={[
+                { x: "Jan", y: 2 },
+                { x: "Feb", y: 3 },
+                { x: "Mar", y: 2 },
+                { x: "Apr", y: 3 },
+                { x: "May", y: 5 }
+              ]}
+            />
+            <VictoryLine
+              style={{ data: { stroke: "black" } }}
+              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+              data={[
+                { x: "Jan", y: 9 },
+                { x: "Feb", y: 13 },
+                { x: "Mar", y: 9 },
+                { x: "Apr", y: 10 },
+                { x: "May", y: 10 }
+              ]}
+            />
+          </VictoryChart>
+        </View>
+
+        <View style={styles.throwThrashContainerGreen}>
+          <Text
+            style={{
+              //color: "#6E6E6E",
+              fontSize: 20,
+              color: "white",
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              paddingBottom: 10,
+              paddingLeft: 20,
+              fontWeight: "bold"
+            }}
+          >
+            Thrown trash in SRS - November
+          </Text>
+
+          <VictoryPie
+            domainPadding={17}
+            width={350}
+            height={300}
+            colorScale={["#009245", "#33CC66", "#66FF66"]}
+            data={[
+              { x: "Restavfall", y: 1234 },
+              { x: "Tidningar", y: 3048 },
+              { x: "Plast", y: 2600 }
+            ]}
+          />
         </View>
       </ScrollView>
     </ImageBackground>

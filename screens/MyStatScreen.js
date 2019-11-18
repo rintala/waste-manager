@@ -1,9 +1,9 @@
 import * as WebBrowser from "expo-web-browser";
 import React, { useState, useEffect } from "react";
-import { ConfettiCannon } from 'react-native-confetti-cannon';
+import { ConfettiCannon } from "react-native-confetti-cannon";
 //import { Confetti } from "native-confetti";
-import Confetti from 'react-dom-confetti';
-import LottieView from 'lottie-react-native';
+import Confetti from "react-dom-confetti";
+import LottieView from "lottie-react-native";
 
 import {
   Image,
@@ -27,8 +27,6 @@ import {
   VictoryTheme
 } from "victory-native";
 
-
-
 export default function SignInScreen(props) {
   const [countPlastic, setPlastic] = useState(0);
   const [countPaper, setPaper] = useState(0);
@@ -36,9 +34,9 @@ export default function SignInScreen(props) {
   [isLoggedOut, setIsLoggedOut] = useState(false);
 
   const data = [
-    { type: "plastic", trashbags: countPlastic, fill: '#009245' },
-    { type: "paper", trashbags: countPaper, fill: '#33CC66' },
-    { type: "rest", trashbags: countRest, fill: '#66FF66' }
+    { type: "plastic", trashbags: countPlastic, fill: "#009245" },
+    { type: "paper", trashbags: countPaper, fill: "#33CC66" },
+    { type: "rest", trashbags: countRest, fill: "#66FF66" }
   ];
 
   checkIfAchievementUnlocked = () => {
@@ -51,15 +49,12 @@ export default function SignInScreen(props) {
         message: "Great job"
       };
       isAchieved = true;
-
-    }
-    else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
+    } else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
       achievement = {
         level: 2,
         message: "Amazing job"
       };
       isAchieved = true;
-
     }
 
     return [isAchieved, achievement];
@@ -67,10 +62,7 @@ export default function SignInScreen(props) {
 
   incrementTrash = typeOfTrash => {
     if (typeOfTrash === "plastic") {
-      setPlastic(
-        prevCountPlastic => ++prevCountPlastic,
-        console.log("sho", countPlastic)
-      );
+      setPlastic(prevCountPlastic => ++prevCountPlastic);
     } else if (typeOfTrash === "paper") {
       setPaper(prevCountPaper => ++prevCountPaper);
     } else if (typeOfTrash === "rest") {
@@ -82,7 +74,6 @@ export default function SignInScreen(props) {
     const [isAchievementUnlocked, achievement] = checkIfAchievementUnlocked();
 
     if (isAchievementUnlocked) {
-
       Alert.alert(
         "Level: " + "" + achievement.level,
         "Message: " + achievement.message
@@ -92,7 +83,6 @@ export default function SignInScreen(props) {
     [countPlastic, countPaper, countRest];
 
   const MyStatContent = (
-
     <ImageBackground
       source={require("../assets/images/background-green.png")}
       style={{ width: "100%", height: "100%" }}
@@ -101,8 +91,7 @@ export default function SignInScreen(props) {
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
-        > 
-
+        >
           <View>
             <Text
               style={{
@@ -117,10 +106,8 @@ export default function SignInScreen(props) {
             >
               Welcome User
             </Text>
-            
           </View>
-          
-          
+
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
@@ -130,68 +117,89 @@ export default function SignInScreen(props) {
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 10,
                 paddingLeft: 20,
-                fontWeight: 'bold',
+                fontWeight: "bold"
                 //color: "#6E6E6E"
               }}
             >
               My thrown trash - November
             </Text>
 
-            
             <Text
               style={{
                 fontSize: 14,
                 paddingBottom: 15,
                 paddingLeft: 20,
                 fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
                 //color: "#6E6E6E"
               }}
             >
               To register thrown trash press the '+' for the correct trash type.
             </Text>
 
-
-
-            <View 
+            <View
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-around',
+                flexDirection: "row",
+                justifyContent: "space-around",
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
                 paddingBottom: 0
-                }}>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}} >Plastic</Text>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Paper</Text>
-              <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Rest</Text>
+              }}
+            >
+              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
+                Plastic
+              </Text>
+              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
+                Paper
+              </Text>
+              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
+                Rest
+              </Text>
             </View>
 
-            <View 
+            <View
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-around',
+                flexDirection: "row",
+                justifyContent: "space-around",
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
-                }}>
-              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countPlastic}</Text>
-              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countPaper}</Text>
-              <Text style={{fontSize: 20, fontWeight: 'bold'}}>{countRest}</Text>
+              }}
+            >
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                {countPlastic}
+              </Text>
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                {countPaper}
+              </Text>
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                {countRest}
+              </Text>
             </View>
 
             <VictoryChart domainPadding={17} width={350} height={300}>
-              <VictoryBar animate={{duration: 500, onStart: {duration: 1000}}} style={{data: {fill: ({ datum }) => datum.fill, stroke: 'black', strokeWidth: 1 }}} data={data} x="type" y="trashbags" />
+              <VictoryBar
+                animate={{ duration: 500, onStart: { duration: 1000 } }}
+                style={{
+                  data: {
+                    fill: ({ datum }) => datum.fill,
+                    stroke: "black",
+                    strokeWidth: 1
+                  }
+                }}
+                data={data}
+                x="type"
+                y="trashbags"
+              />
             </VictoryChart>
           </View>
 
-
-
           <View style={styles.buttonsContainer}>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <View style={{paddingBottom: 5}}>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <View style={{ paddingBottom: 5 }}>
                 <Image
-                  style={{marginTop: 5, width: 70, height: 70}}
+                  style={{ marginTop: 5, width: 70, height: 70 }}
                   source={require("../assets/images/recycled-plastic-2.png")}
                 />
               </View>
@@ -213,10 +221,10 @@ export default function SignInScreen(props) {
               </TouchableHighlight>
             </View>
 
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <View style={{paddingBottom: 5}}>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <View style={{ paddingBottom: 5 }}>
                 <Image
-                  style={{marginTop: 5, width: 60, height: 70}}
+                  style={{ marginTop: 5, width: 60, height: 70 }}
                   source={require("../assets/images/recycled-paper-2.png")}
                 />
               </View>
@@ -236,10 +244,16 @@ export default function SignInScreen(props) {
               </TouchableHighlight>
             </View>
 
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <View style={{paddingBottom: 5}}>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <View style={{ paddingBottom: 5 }}>
                 <Image
-                  style={{marginTop: 5, width: 80, height: 50, marginBottom: 10, marginTop: 10}}
+                  style={{
+                    marginTop: 5,
+                    width: 80,
+                    height: 50,
+                    marginBottom: 10,
+                    marginTop: 10
+                  }}
                   source={require("../assets/images/recycled-rest-4.png")}
                 />
               </View>
@@ -258,12 +272,9 @@ export default function SignInScreen(props) {
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
             </View>
-
           </View>
 
-
           <View style={styles.dateContainer}>
-              
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <TouchableHighlight
                 style={{
@@ -293,12 +304,16 @@ export default function SignInScreen(props) {
                   alignItems: "center",
                   flex: 1,
                   justifyContent: "space-around",
-                  marginBottom: 0,
+                  marginBottom: 0
                 }}
               >
-                <Text style={{ color: "#B8D2B9", fontWeight: 'bold', padding: 10 }}>Month</Text>
+                <Text
+                  style={{ color: "#B8D2B9", fontWeight: "bold", padding: 10 }}
+                >
+                  Month
+                </Text>
               </TouchableHighlight>
-              </View>
+            </View>
 
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <TouchableHighlight
@@ -317,13 +332,11 @@ export default function SignInScreen(props) {
                 <Text style={{ color: "white", padding: 10 }}>Year</Text>
               </TouchableHighlight>
             </View>
-
           </View>
-
 
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TouchableHighlight
-              onPress={() => setIsLoggedOut(true)}
+              onPress={() => setIsLoggedOut(prevState => !prevState)}
               style={{
                 backgroundColor: "white",
                 opacity: 0.9,
@@ -337,19 +350,19 @@ export default function SignInScreen(props) {
                 marginBottom: 0
               }}
             >
-              <Text style={{ color: "#B8D2B9", fontWeight: 'bold', padding: 10 }}>Log out</Text>
+              <Text
+                style={{ color: "#B8D2B9", fontWeight: "bold", padding: 10 }}
+              >
+                Log out
+              </Text>
             </TouchableHighlight>
           </View>
-
-          
         </ScrollView>
-        
       </View>
     </ImageBackground>
   );
 
   return !isLoggedOut ? MyStatContent : <SignInScreen />;
-
 }
 
 SignInScreen.navigationOptions = {
@@ -407,7 +420,7 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   buttonsContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     opacity: 0.9,
     marginTop: 15,
     marginLeft: 20,
@@ -435,7 +448,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   dateContainer: {
-    backgroundColor: '#B8D2B9',
+    backgroundColor: "#B8D2B9",
     opacity: 0.9,
     marginTop: 15,
     marginLeft: 20,
@@ -446,5 +459,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-around"
-  },
+  }
 });
