@@ -53,6 +53,14 @@ export default function SignInScreen(props) {
       isAchieved = true;
 
     }
+    else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
+      achievement = {
+        level: 2,
+        message: "Amazing job"
+      };
+      isAchieved = true;
+
+    }
 
     return [isAchieved, achievement];
   };
@@ -152,7 +160,7 @@ export default function SignInScreen(props) {
                 justifyContent: 'space-around',
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 5
+                paddingBottom: 0
                 }}>
               <Text style={{fontSize: 20, textDecorationLine: 'underline'}} >Plastic</Text>
               <Text style={{fontSize: 20, textDecorationLine: 'underline'}}>Paper</Text>
@@ -288,7 +296,7 @@ export default function SignInScreen(props) {
                   marginBottom: 0,
                 }}
               >
-                <Text style={{ color: "#A5C9A9", fontWeight: 'bold', padding: 10 }}>Month</Text>
+                <Text style={{ color: "#B8D2B9", fontWeight: 'bold', padding: 10 }}>Month</Text>
               </TouchableHighlight>
               </View>
 
@@ -329,7 +337,7 @@ export default function SignInScreen(props) {
                 marginBottom: 0
               }}
             >
-              <Text style={{ color: "#A5C9A9", fontWeight: 'bold', padding: 10 }}>Log out</Text>
+              <Text style={{ color: "#B8D2B9", fontWeight: 'bold', padding: 10 }}>Log out</Text>
             </TouchableHighlight>
           </View>
 
@@ -416,7 +424,7 @@ const styles = StyleSheet.create({
     color: "#2e78b7"
   },
   throwThrashContainer: {
-    backgroundColor: "#A5C9A9",
+    backgroundColor: "#B8D2B9",
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
@@ -427,7 +435,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   dateContainer: {
-    backgroundColor: '#A5C9A9',
+    backgroundColor: '#B8D2B9',
     opacity: 0.9,
     marginTop: 15,
     marginLeft: 20,

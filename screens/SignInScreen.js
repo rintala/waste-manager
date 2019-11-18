@@ -64,7 +64,7 @@ export default function SignInScreen(props) {
               textAlign: "center",
               color: "white",
               marginTop: 20,
-              marginBottom: 20,
+              marginBottom: 80,
               fontSize: 20,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue"

@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   throwThrashContainerGreen: {
-    backgroundColor: "#A5C9A9",
+    backgroundColor: "#B8D2B9",
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,

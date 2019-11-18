@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   aboutContainer2: {
-    backgroundColor: "#A5C9A9",
+    backgroundColor: "#B8D2B9",
     marginLeft: 20,
     marginRight: 20,
     opacity: 0.9,
