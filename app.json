@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "An app for managing waste",
+    "githubUrl": "https://github.com/rintala/waste-manager"
   }
 }

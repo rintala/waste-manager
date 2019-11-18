@@ -74,55 +74,79 @@ export default function GeneralInfoScreen() {
               color: "#6E6E6E"
             }}
           >
-            Total amount of trash thrown, includes plastic, paper and rest.
+            Total number of trashbags thrown, includes plastic, paper and rest.
           </Text>
 
-          <VictoryChart domainPadding={17} width={350} height={300}>
-            <VictoryLine
-              style={{ data: { stroke: "#009245" } }}
-              /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */
-              data={[
-                { x: "Jan", y: 3 },
-                { x: "Feb", y: 4 },
-                { x: "Mar", y: 3 },
-                { x: "Apr", y: 5 },
-                { x: "May", y: 2 }
-              ]}
-            />
-            <VictoryLine
-              style={{ data: { stroke: "#33CC66" } }}
-              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
-              data={[
-                { x: "Jan", y: 4 },
-                { x: "Feb", y: 6 },
-                { x: "Mar", y: 4 },
-                { x: "Apr", y: 2 },
-                { x: "May", y: 3 }
-              ]}
-            />
-            <VictoryLine
-              style={{ data: { stroke: "#66FF66" } }}
-              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
-              data={[
-                { x: "Jan", y: 2 },
-                { x: "Feb", y: 3 },
-                { x: "Mar", y: 2 },
-                { x: "Apr", y: 3 },
-                { x: "May", y: 5 }
-              ]}
-            />
-            <VictoryLine
-              style={{ data: { stroke: "black" } }}
-              /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
-              data={[
-                { x: "Jan", y: 9 },
-                { x: "Feb", y: 13 },
-                { x: "Mar", y: 9 },
-                { x: "Apr", y: 10 },
-                { x: "May", y: 10 }
-              ]}
-            />
-          </VictoryChart>
+          {Platform.OS === "android" ? (
+            <VictoryChart domainPadding={17} width={350} height={300}>
+              <VictoryBar
+                animate={{ duration: 400, onStart: { duration: 1000 } }}
+                style={{
+                  data: {
+                    fill: "#B8D2B9",
+                    stroke: "black",
+                    strokeWidth: 1
+                  }
+                }}
+                data={[
+                  { month: "Jan", y: 9 },
+                  { month: "Feb", y: 13 },
+                  { month: "Mar", y: 9 },
+                  { month: "Apr", y: 10 },
+                  { month: "May", y: 10 }
+                ]}
+                x="month"
+                y="y"
+              />
+            </VictoryChart>
+          ) : (
+            <VictoryChart domainPadding={17} width={350} height={300}>
+              <VictoryLine
+                style={{ data: { stroke: "#009245" } }}
+                /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */
+                data={[
+                  { x: "Jan", y: 3 },
+                  { x: "Feb", y: 4 },
+                  { x: "Mar", y: 3 },
+                  { x: "Apr", y: 5 },
+                  { x: "May", y: 2 }
+                ]}
+              />
+              <VictoryLine
+                style={{ data: { stroke: "#33CC66" } }}
+                /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+                data={[
+                  { x: "Jan", y: 4 },
+                  { x: "Feb", y: 6 },
+                  { x: "Mar", y: 4 },
+                  { x: "Apr", y: 2 },
+                  { x: "May", y: 3 }
+                ]}
+              />
+              <VictoryLine
+                style={{ data: { stroke: "#66FF66" } }}
+                /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+                data={[
+                  { x: "Jan", y: 2 },
+                  { x: "Feb", y: 3 },
+                  { x: "Mar", y: 2 },
+                  { x: "Apr", y: 3 },
+                  { x: "May", y: 5 }
+                ]}
+              />
+              <VictoryLine
+                style={{ data: { stroke: "black" } }}
+                /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
+                data={[
+                  { x: "Jan", y: 9 },
+                  { x: "Feb", y: 13 },
+                  { x: "Mar", y: 9 },
+                  { x: "Apr", y: 10 },
+                  { x: "May", y: 10 }
+                ]}
+              />
+            </VictoryChart>
+          )}
         </View>
 
         <View style={styles.throwThrashContainerGreen}>

@@ -336,7 +336,7 @@ export default function SignInScreen(props) {
 
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TouchableHighlight
-              onPress={() => setIsLoggedOut(prevState => !prevState)}
+              onPress={() => setIsLoggedOut(true)}
               style={{
                 backgroundColor: "white",
                 opacity: 0.9,
@@ -362,7 +362,7 @@ export default function SignInScreen(props) {
     </ImageBackground>
   );
 
-  return !isLoggedOut ? MyStatContent : <SignInScreen />;
+  return isLoggedOut ? <MyStatContent /> : MyStatContent;
 }
 
 SignInScreen.navigationOptions = {
