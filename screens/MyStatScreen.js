@@ -4,6 +4,7 @@ import { ConfettiCannon } from "react-native-confetti-cannon";
 //import { Confetti } from "native-confetti";
 import Confetti from "react-dom-confetti";
 import LottieView from "lottie-react-native";
+import SignInScreen from "./SignInScreen";
 
 import {
   Image,
@@ -27,7 +28,7 @@ import {
   VictoryTheme
 } from "victory-native";
 
-export default function SignInScreen(props) {
+export default function MyStatScreen(props) {
   const [countPlastic, setPlastic] = useState(0);
   const [countPaper, setPaper] = useState(0);
   const [countRest, setRest] = useState(0);
@@ -39,6 +40,11 @@ export default function SignInScreen(props) {
     { type: "rest", trashbags: countRest, fill: "#66FF66" }
   ];
 
+  clearCounts = () => {
+    setPlastic(0);
+    setPaper(0);
+    setRest(0);
+  };
   checkIfAchievementUnlocked = () => {
     let achievement = {};
     let isAchieved = false;
@@ -336,7 +342,10 @@ export default function SignInScreen(props) {
 
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TouchableHighlight
-              onPress={() => setIsLoggedOut(true)}
+              onPress={() => {
+                clearCounts();
+                setIsLoggedOut(true);
+              }}
               style={{
                 backgroundColor: "white",
                 opacity: 0.9,
@@ -362,35 +371,12 @@ export default function SignInScreen(props) {
     </ImageBackground>
   );
 
-  return isLoggedOut ? <MyStatContent /> : MyStatContent;
+  return isLoggedOut ? <SignInScreen /> : MyStatContent;
 }
 
 SignInScreen.navigationOptions = {
   header: null
 };
-
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
 
 function handleLearnMorePress() {
   WebBrowser.openBrowserAsync(
