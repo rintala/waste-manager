@@ -1,9 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import React, { useState, useEffect } from "react";
-import { ConfettiCannon } from "react-native-confetti-cannon";
-//import { Confetti } from "native-confetti";
-import Confetti from "react-dom-confetti";
-import LottieView from "lottie-react-native";
+import ConfettiCannon from "react-native-confetti-cannon";
 import SignInScreen from "./SignInScreen";
 
 import {
@@ -33,6 +30,7 @@ export default function MyStatScreen(props) {
   const [countPaper, setPaper] = useState(0);
   const [countRest, setRest] = useState(0);
   [isLoggedOut, setIsLoggedOut] = useState(false);
+  [isAchieved, setIsAchieved] = useState(false);
 
   const data = [
     { type: "plastic", trashbags: countPlastic, fill: "#009245" },
@@ -45,10 +43,10 @@ export default function MyStatScreen(props) {
     setPaper(0);
     setRest(0);
   };
+
   checkIfAchievementUnlocked = () => {
     let achievement = {};
     let isAchieved = false;
-
     if (countPlastic === 1 && countPaper === 1 && countRest === 1) {
       achievement = {
         level: 1,
@@ -80,13 +78,23 @@ export default function MyStatScreen(props) {
     const [isAchievementUnlocked, achievement] = checkIfAchievementUnlocked();
 
     if (isAchievementUnlocked) {
+      setIsAchieved(true);
       Alert.alert(
         "Level: " + "" + achievement.level,
-        "Message: " + achievement.message
+        "Message: " + achievement.message,
+
+        [
+          {
+            text: "OK",
+            onPress: () => {
+              setIsAchieved(false);
+            }
+          }
+        ]
       );
+      console.log("isAchived", isAchieved);
     }
-  }),
-    [countPlastic, countPaper, countRest];
+  }, [countPlastic, countPaper, countRest]);
 
   const MyStatContent = (
     <ImageBackground
@@ -94,6 +102,7 @@ export default function MyStatScreen(props) {
       style={{ width: "100%", height: "100%" }}
     >
       <View style={styles.container}>
+        {isAchieved && <ConfettiCannon count={200} origin={{ x: -10, y: 0 }} />}
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
