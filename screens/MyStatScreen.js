@@ -102,7 +102,7 @@ export default function MyStatScreen(props) {
       style={{ width: "100%", height: "100%" }}
     >
       <View style={styles.container}>
-        {isAchieved && <ConfettiCannon count={200} origin={{ x: -10, y: 0 }} />}
+        {isAchieved && <ConfettiCannon count={50} origin={{ x: -10, y: 0 }} />}
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
