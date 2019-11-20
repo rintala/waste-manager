@@ -41,7 +41,7 @@ export default function AboutScreen() {
               paddingBottom: 10,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             KTH meets Stockholm Royal Seaport
@@ -49,7 +49,7 @@ export default function AboutScreen() {
           <Text
             style={{
               fontSize: 14,
-              color: "#6E6E6E",
+              // color: "#6E6E6E",
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
             }}

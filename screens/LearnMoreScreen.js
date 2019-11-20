@@ -41,7 +41,7 @@ export default function LearnMoreScreen() {
               paddingBottom: 10,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             Food waste
@@ -52,7 +52,7 @@ export default function LearnMoreScreen() {
               fontSize: 14,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             Divide into smaller pieces. Food scraps, for example:
@@ -69,7 +69,7 @@ export default function LearnMoreScreen() {
                   fontSize: 14,
                   fontFamily:
                     Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                  color: "#6E6E6E"
+                  // color: "#6E6E6E"
                 }}
               >
                 {item.key}
@@ -82,7 +82,7 @@ export default function LearnMoreScreen() {
               fontSize: 14,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             For more information, read instructions from yours waste mill
@@ -144,7 +144,7 @@ export default function LearnMoreScreen() {
               paddingBottom: 10,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             Plastic packaging
@@ -155,7 +155,7 @@ export default function LearnMoreScreen() {
               fontSize: 14,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             Pack in bag, max 25 liters
@@ -175,7 +175,7 @@ export default function LearnMoreScreen() {
                   fontSize: 14,
                   fontFamily:
                     Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                  color: "#6E6E6E"
+                  // color: "#6E6E6E"
                 }}
               >
                 {item.key}

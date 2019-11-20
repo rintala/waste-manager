@@ -52,7 +52,7 @@ export default function GeneralInfoScreen() {
         <View style={styles.throwThrashContainer}>
           <Text
             style={{
-              color: "#6E6E6E",
+              // color: "#6E6E6E",
               fontSize: 20,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
@@ -71,7 +71,7 @@ export default function GeneralInfoScreen() {
               paddingLeft: 20,
               fontFamily:
                 Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-              color: "#6E6E6E"
+              // color: "#6E6E6E"
             }}
           >
             Total number of trashbags thrown, includes plastic, paper and rest.
