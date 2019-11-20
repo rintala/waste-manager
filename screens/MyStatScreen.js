@@ -142,8 +142,9 @@ export default function MyStatScreen(props) {
             <Text
               style={{
                 fontSize: 14,
-                paddingBottom: 15,
+                // paddingBottom: 0,
                 paddingLeft: 20,
+                paddingRight: 20,
                 fontFamily:
                   Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
                 //color: "#6E6E6E"
@@ -152,7 +153,7 @@ export default function MyStatScreen(props) {
               To register thrown trash press the '+' for the correct trash type.
             </Text>
 
-            <View
+            {/* <View
               style={{
                 flex: 1,
                 flexDirection: "row",
@@ -191,9 +192,9 @@ export default function MyStatScreen(props) {
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>
                 {countRest}
               </Text>
-            </View>
+            </View> */}
 
-            <VictoryChart domainPadding={17} width={350} height={300}>
+            <VictoryChart domainPadding={17} width={380} height={300} paddingRight={30}>
               <VictoryBar
                 animate={{ duration: 500, onStart: { duration: 1000 } }}
                 style={{
@@ -208,7 +209,7 @@ export default function MyStatScreen(props) {
                 y="trashbags"
               />
             </VictoryChart>
-          </View>
+          
 
           <View style={styles.buttonsContainer}>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -224,6 +225,8 @@ export default function MyStatScreen(props) {
                   height: 30,
                   width: 100,
                   borderRadius: 10,
+                  borderWidth: 0.5,
+                  // backgroundColor: "#B8D2B9",
                   backgroundColor: "#009245",
                   flex: 1,
 
@@ -245,9 +248,11 @@ export default function MyStatScreen(props) {
               </View>
               <TouchableHighlight
                 style={{
-                  height: 30,
+                  height: 20,
                   width: 100,
                   borderRadius: 10,
+                  borderWidth: 0.5,
+                  // backgroundColor: "#B8D2B9",
                   backgroundColor: "#33CC66",
                   flex: 1,
                   justifyContent: "center",
@@ -267,7 +272,7 @@ export default function MyStatScreen(props) {
                     width: 80,
                     height: 50,
                     marginBottom: 10,
-                    marginTop: 10
+                    marginTop: 15
                   }}
                   source={require("../assets/images/recycled-rest-4.png")}
                 />
@@ -277,6 +282,8 @@ export default function MyStatScreen(props) {
                   height: 30,
                   width: 100,
                   borderRadius: 10,
+                  borderWidth: 0.5,
+                  // backgroundColor: "#B8D2B9",
                   backgroundColor: "#66FF66",
                   flex: 1,
                   justifyContent: "center",
@@ -288,42 +295,52 @@ export default function MyStatScreen(props) {
               </TouchableHighlight>
             </View>
           </View>
+          </View>
+
+          
+
+          <View style={{backgroundColor: '#B8D2B9', marginLeft: 20, marginRight: 20, marginTop: 10, borderRadius: 10}}>
+          <View>
+          <Text style={{textAlign: 'left', marginLeft: 20, marginRight: 20, marginBottom: 10, marginTop: 10}}>
+              Press on the different time buttons to change the time frame for your thrown trash.
+            </Text>
+          </View>
 
           <View style={styles.dateContainer}>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <TouchableHighlight
                 style={{
-                  //backgroundColor: "white",
-                  //backgroundColor: "#009245",
+                  height: 30,
+                  width: 100,
                   borderRadius: 10,
-                  marginTop: 5,
-                  //width: 90,
-                  alignItems: "center",
+                  borderWidth: 0.5,
+                  backgroundColor: "white",
                   flex: 1,
-                  justifyContent: "space-around",
-                  marginBottom: 0
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
               >
-                <Text style={{ color: "white", padding: 10 }}>Week</Text>
+                <Text style={{ color: "black", textAlign: 'center' }}>
+                  Week
+                </Text>
               </TouchableHighlight>
             </View>
 
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <TouchableHighlight
                 style={{
-                  backgroundColor: "white",
-                  //backgroundColor: "#009245",
+                  height: 30,
+                  width: 100,
                   borderRadius: 10,
-                  marginTop: 5,
-                  width: 90,
-                  alignItems: "center",
+                  borderWidth: 0.5,
+                  backgroundColor: '#33CC66',
                   flex: 1,
-                  justifyContent: "space-around",
-                  marginBottom: 0
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
               >
                 <Text
-                  style={{ color: "#B8D2B9", fontWeight: "bold", padding: 10 }}
+                  style={{ color: "white", textAlign: 'center' }}
                 >
                   Month
                 </Text>
@@ -333,20 +350,23 @@ export default function MyStatScreen(props) {
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <TouchableHighlight
                 style={{
-                  //backgroundColor: "white",
-                  //backgroundColor: "#009245",
+                  height: 30,
+                  width: 100,
                   borderRadius: 10,
-                  marginTop: 5,
-                  //width: 90,
-                  alignItems: "center",
+                  borderWidth: 0.5,
+                  backgroundColor: "white",
                   flex: 1,
-                  justifyContent: "space-around",
-                  marginBottom: 0
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
               >
-                <Text style={{ color: "white", padding: 10 }}>Year</Text>
+                <Text style={{ color: "black", textAlign: 'center' }}>
+                  Year
+                </Text>
               </TouchableHighlight>
             </View>
+          </View>
+
           </View>
 
           <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -356,22 +376,24 @@ export default function MyStatScreen(props) {
                 setIsLoggedOut(true);
               }}
               style={{
-                backgroundColor: "white",
-                opacity: 0.9,
-                //backgroundColor: "#009245",
+                // backgroundColor: "#B8D2B9",
+                // borderWidth: 0.5,
+                opacity: 1,
+                backgroundColor: "#33CC66",
                 borderRadius: 10,
-                marginTop: 20,
+                marginTop: 10,
                 width: 375,
                 alignItems: "center",
                 flex: 1,
                 justifyContent: "flex-end",
-                marginBottom: 0
+                marginBottom: 0,
+                marginTop: 80
               }}
             >
               <Text
-                style={{ color: "#B8D2B9", fontWeight: "bold", padding: 10 }}
+                style={{ color: "white", padding: 10 }}
               >
-                Log out
+                Sign out
               </Text>
             </TouchableHighlight>
           </View>
@@ -415,13 +437,9 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   buttonsContainer: {
-    backgroundColor: "white",
-    opacity: 0.9,
-    marginTop: 15,
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 10,
-    padding: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
@@ -432,7 +450,8 @@ const styles = StyleSheet.create({
     color: "#2e78b7"
   },
   throwThrashContainer: {
-    backgroundColor: "#B8D2B9",
+    //backgroundColor: "#B8D2B9",
+    backgroundColor: "white",
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
@@ -443,16 +462,19 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   dateContainer: {
-    backgroundColor: "#B8D2B9",
+    // backgroundColor: "white",
+    // backgroundColor: "#B8D2B9",
     opacity: 0.9,
-    marginTop: 15,
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 10,
-    padding: 10,
-    alignItems: "center",
+    //marginTop: 15,
+    marginLeft: 10,
+    marginRight: 5,
+    paddingBottom: 10,
+    // paddingLeft: 10,
+    // paddingRight: 10,
+    // alignItems: "center",
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    borderRadius: 10
   }
 });
