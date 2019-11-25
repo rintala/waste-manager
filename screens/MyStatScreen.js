@@ -24,6 +24,7 @@ import {
   VictoryPie,
   VictoryTheme
 } from "victory-native";
+import { isFor } from "@babel/types";
 
 export default function MyStatScreen(props) {
   const [countPlastic, setPlastic] = useState(0);
@@ -32,8 +33,12 @@ export default function MyStatScreen(props) {
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
 
-  // status: ["disturbed", "ok", "down"]
-  const [status, setStatus] = useState("disturbed");
+  const statuses = [
+    { status: "ok", color: "green" },
+    { status: "disturbed", color: "yellow" },
+    { status: "down", color: "red" }
+  ];
+  const [status, setStatus] = useState(statuses[0].status);
 
   const data = [
     { type: "plastic", trashbags: countPlastic, fill: "#009245" },
@@ -75,6 +80,17 @@ export default function MyStatScreen(props) {
     } else if (typeOfTrash === "rest") {
       setRest(prevCountRest => ++prevCountRest);
     }
+  };
+
+  reportUpdatedStatus = newStatus => {
+    console.log("send feedback to backend - status:", newStatus);
+    console.log("determine if problem actually has occurred ");
+    console.log("based on backend evaluation - request support");
+  };
+
+  updateStatus = newStatus => {
+    reportUpdatedStatus(newStatus);
+    setStatus(newStatus);
   };
 
   useEffect(() => {
@@ -165,6 +181,41 @@ export default function MyStatScreen(props) {
               >
                 : {status}
               </Text>
+            </View>
+            <View style={styles.statusContainer}>
+              {statuses.map(statusObject => (
+                <View style={styles.buttonContainer}>
+                  <View
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                  >
+                    <TouchableHighlight
+                      style={{
+                        borderRadius: 10,
+                        borderWidth: 0.5,
+
+                        // backgroundColor: "#B8D2B9",
+                        backgroundColor: statusObject.color,
+                        flex: 1,
+                        padding: 15,
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                      onPress={() => updateStatus(statusObject.status)}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 15
+                        }}
+                      >
+                        {statusObject.status}
+                      </Text>
+                    </TouchableHighlight>
+                  </View>
+                </View>
+              ))}
             </View>
           </View>
 
@@ -502,6 +553,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around"
   },
+
+  buttonContainer: {
+    padding: 5,
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
@@ -509,6 +568,7 @@ const styles = StyleSheet.create({
 
   statusContainer: {
     //backgroundColor: "#B8D2B9",
+    marginTop: 10,
     color: "white",
     flex: 1,
     flexDirection: "row"
