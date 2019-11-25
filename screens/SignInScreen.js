@@ -1,5 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import React, { useState } from "react";
+import axios from 'axios';
 import {
   Image,
   Platform,
@@ -19,6 +20,50 @@ import { MonoText } from "../components/StyledText";
 
 export default function SignInScreen(props) {
   [isLoggedIn, setIsLoggedIn] = useState(false);
+  [tagNrInput, settagNrInput] = useState('');
+  [PasswordInput, setPasswordInput] = useState('');
+  [userDataPlastic, setuserDataPlastic] = useState(0);
+  [userDataPaper, setuserDataPaper] = useState(0);
+  [userDataRest, setuserDataRest] = useState(0);
+
+  const serverURL = 'http://localhost:5000/';
+  // const serverURL = 'http://78.73.29.132:5000/';
+  
+  const http = axios.create({
+    baseURL: serverURL,
+  });
+
+  onLogin = () => {
+    console.log(tagNrInput);
+    console.log(PasswordInput);
+
+    if (!isLoggedIn){
+      //Do a call to the server
+      http.post('/login', {
+        username: tagNrInput,
+        password: PasswordInput
+      })
+      .then(response => { 
+
+        //console.log(response.data.plastic)
+        //console.log(response.data.paper)
+        //console.log(response.data.rest)
+        setuserDataPlastic(response.data.plastic)
+        setuserDataPaper(response.data.paper)
+        setuserDataRest(response.data.rest)
+        setIsLoggedIn(true)
+      })
+      .catch(error => {
+          // console.log(error)
+          Alert.alert(
+            "Failed to login"
+          );
+          
+      });
+      // console.log(isLoggedIn);
+    }
+
+  }
 
   const SignInContent = (
     <View style={styles.container}>
@@ -93,6 +138,7 @@ export default function SignInScreen(props) {
             keyboardType="number-pad"
             width={300}
             underlineColorAndroid="transparent"
+            onChangeText={(text) => settagNrInput(text)}
           />
         </View>
 
@@ -115,11 +161,12 @@ export default function SignInScreen(props) {
             secureTextEntry={true}
             width={300}
             underlineColorAndroid="transparent"
+            onChangeText={(text) => setPasswordInput(text)}
           />
         </View>
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <TouchableHighlight
-            onPress={() => setIsLoggedIn(true)}
+            onPress={() => onLogin()}
             style={{
               //backgroundColor: "#7A9A7E",
               backgroundColor: "#009245",
@@ -147,7 +194,7 @@ export default function SignInScreen(props) {
     </View>
   );
 
-  return !isLoggedIn ? SignInContent : <MyStatScreen />;
+  return !isLoggedIn ? SignInContent : <MyStatScreen plastic={userDataPlastic} paper={userDataPaper} rest={userDataRest} user={tagNrInput}/>;
 }
 
 SignInScreen.navigationOptions = {

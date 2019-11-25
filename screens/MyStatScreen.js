@@ -26,13 +26,29 @@ import {
 } from "victory-native";
 
 export default function MyStatScreen(props) {
-  const [countPlastic, setPlastic] = useState(0);
-  const [countPaper, setPaper] = useState(0);
-  const [countRest, setRest] = useState(0);
+  
+  var plasticCount = props.plastic;
+  var paperCount = props.paper;
+  var restCount = props.rest;
+  
+  console.log(plasticCount);
+  console.log(paperCount);
+  console.log(restCount);  
+
+  // Load these variables with the data from the userdata
+  const [countPlastic, setPlastic] = useState(plasticCount);
+  const [countPaper, setPaper] = useState(paperCount);
+  const [countRest, setRest] = useState(restCount);
+
+  // setPlastic(plasticCount);
+  // setPaper(paperCount);
+  // setRest(restCount);
+
+
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
 
-  const data = [
+  const trashData = [
     { type: "plastic", trashbags: countPlastic, fill: "#009245" },
     { type: "paper", trashbags: countPaper, fill: "#33CC66" },
     { type: "rest", trashbags: countRest, fill: "#66FF66" }
@@ -64,13 +80,13 @@ export default function MyStatScreen(props) {
     return [isAchieved, achievement];
   };
 
-  incrementTrash = typeOfTrash => {
+  incrementTrash = (typeOfTrash, amountOfTrash) => {
     if (typeOfTrash === "plastic") {
-      setPlastic(prevCountPlastic => ++prevCountPlastic);
+      setPlastic(prevCountPlastic => prevCountPlastic=prevCountPlastic+amountOfTrash);
     } else if (typeOfTrash === "paper") {
-      setPaper(prevCountPaper => ++prevCountPaper);
+      setPaper(prevCountPaper => prevCountPaper=prevCountPaper+amountOfTrash);
     } else if (typeOfTrash === "rest") {
-      setRest(prevCountRest => ++prevCountRest);
+      setRest(prevCountRest => prevCountRest=prevCountRest+amountOfTrash);
     }
   };
 
@@ -92,7 +108,7 @@ export default function MyStatScreen(props) {
           }
         ]
       );
-      console.log("isAchived", isAchieved);
+      // console.log("isAchived", isAchieved);
     }
   }, [countPlastic, countPaper, countRest]);
 
@@ -204,7 +220,7 @@ export default function MyStatScreen(props) {
                     strokeWidth: 1
                   }
                 }}
-                data={data}
+                data={trashData}
                 x="type"
                 y="trashbags"
               />
@@ -233,7 +249,7 @@ export default function MyStatScreen(props) {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
-                onPress={() => incrementTrash("plastic")}
+                onPress={() => incrementTrash("plastic", 1)}
               >
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
@@ -258,7 +274,7 @@ export default function MyStatScreen(props) {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
-                onPress={() => incrementTrash("paper")}
+                onPress={() => incrementTrash("paper", 1)}
               >
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
@@ -289,7 +305,7 @@ export default function MyStatScreen(props) {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
-                onPress={() => incrementTrash("rest")}
+                onPress={() => incrementTrash("rest", 1)}
               >
                 <Text style={{ fontSize: 25 }}>+</Text>
               </TouchableHighlight>
