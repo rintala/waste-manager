@@ -32,6 +32,9 @@ export default function MyStatScreen(props) {
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
 
+  // status: ["disturbed", "ok", "down"]
+  const [status, setStatus] = useState("disturbed");
+
   const data = [
     { type: "plastic", trashbags: countPlastic, fill: "#009245" },
     { type: "paper", trashbags: countPaper, fill: "#33CC66" },
@@ -123,6 +126,48 @@ export default function MyStatScreen(props) {
             </Text>
           </View>
 
+          <View
+            style={{
+              backgroundColor:
+                status === "ok"
+                  ? "green"
+                  : status === "disturbed"
+                  ? "yellow"
+                  : "red",
+              opacity: 0.9,
+              paddingTop: 20,
+              borderRadius: 10,
+              padding: 20,
+              marginTop: 5,
+              marginLeft: 20,
+              marginRight: 20
+            }}
+          >
+            <View style={styles.statusContainer}>
+              <Text
+                style={{
+                  color: status === "disturbed" ? "black" : "white",
+                  fontSize: "24px"
+                }}
+              >
+                Status
+              </Text>
+
+              <Image
+                style={{ width: 30, height: 30 }}
+                source={require("../assets/images/recycled-bin.png")}
+              />
+              <Text
+                style={{
+                  color: status === "disturbed" ? "black" : "white",
+                  fontSize: "24px"
+                }}
+              >
+                : {status}
+              </Text>
+            </View>
+          </View>
+
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
@@ -194,7 +239,12 @@ export default function MyStatScreen(props) {
               </Text>
             </View> */}
 
-            <VictoryChart domainPadding={17} width={380} height={300} paddingRight={30}>
+            <VictoryChart
+              domainPadding={17}
+              width={380}
+              height={300}
+              paddingRight={30}
+            >
               <VictoryBar
                 animate={{ duration: 500, onStart: { duration: 1000 } }}
                 style={{
@@ -209,164 +259,175 @@ export default function MyStatScreen(props) {
                 y="trashbags"
               />
             </VictoryChart>
-          
 
-          <View style={styles.buttonsContainer}>
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <View style={{ paddingBottom: 5 }}>
-                <Image
-                  style={{ marginTop: 5, width: 70, height: 70 }}
-                  source={require("../assets/images/recycled-plastic-2.png")}
-                />
-              </View>
+            <View style={styles.buttonsContainer}>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <View style={{ paddingBottom: 5 }}>
+                  <Image
+                    style={{ marginTop: 5, width: 70, height: 70 }}
+                    source={require("../assets/images/recycled-plastic-2.png")}
+                  />
+                </View>
 
-              <TouchableHighlight
-                style={{
-                  height: 30,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  // backgroundColor: "#B8D2B9",
-                  backgroundColor: "#009245",
-                  flex: 1,
-
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-                onPress={() => incrementTrash("plastic")}
-              >
-                <Text style={{ fontSize: 25 }}>+</Text>
-              </TouchableHighlight>
-            </View>
-
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <View style={{ paddingBottom: 5 }}>
-                <Image
-                  style={{ marginTop: 5, width: 60, height: 70 }}
-                  source={require("../assets/images/recycled-paper-2.png")}
-                />
-              </View>
-              <TouchableHighlight
-                style={{
-                  height: 20,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  // backgroundColor: "#B8D2B9",
-                  backgroundColor: "#33CC66",
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-                onPress={() => incrementTrash("paper")}
-              >
-                <Text style={{ fontSize: 25 }}>+</Text>
-              </TouchableHighlight>
-            </View>
-
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <View style={{ paddingBottom: 5 }}>
-                <Image
+                <TouchableHighlight
                   style={{
-                    marginTop: 5,
-                    width: 80,
-                    height: 50,
-                    marginBottom: 10,
-                    marginTop: 15
+                    height: 30,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    // backgroundColor: "#B8D2B9",
+                    backgroundColor: "#009245",
+                    flex: 1,
+
+                    justifyContent: "center",
+                    alignItems: "center"
                   }}
-                  source={require("../assets/images/recycled-rest-4.png")}
-                />
-              </View>
-              <TouchableHighlight
-                style={{
-                  height: 30,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  // backgroundColor: "#B8D2B9",
-                  backgroundColor: "#66FF66",
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-                onPress={() => incrementTrash("rest")}
-              >
-                <Text style={{ fontSize: 25 }}>+</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-          </View>
-
-          
-
-          <View style={{backgroundColor: '#B8D2B9', marginLeft: 20, marginRight: 20, marginTop: 10, borderRadius: 10}}>
-          <View>
-          <Text style={{textAlign: 'left', marginLeft: 20, marginRight: 20, marginBottom: 10, marginTop: 10}}>
-              Press on the different time buttons to change the time frame for your thrown trash.
-            </Text>
-          </View>
-
-          <View style={styles.dateContainer}>
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <TouchableHighlight
-                style={{
-                  height: 30,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  backgroundColor: "white",
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Text style={{ color: "black", textAlign: 'center' }}>
-                  Week
-                </Text>
-              </TouchableHighlight>
-            </View>
-
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <TouchableHighlight
-                style={{
-                  height: 30,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  backgroundColor: '#33CC66',
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Text
-                  style={{ color: "white", textAlign: 'center' }}
+                  onPress={() => incrementTrash("plastic")}
                 >
-                  Month
-                </Text>
-              </TouchableHighlight>
-            </View>
+                  <Text style={{ fontSize: 25 }}>+</Text>
+                </TouchableHighlight>
+              </View>
 
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <TouchableHighlight
-                style={{
-                  height: 30,
-                  width: 100,
-                  borderRadius: 10,
-                  borderWidth: 0.5,
-                  backgroundColor: "white",
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Text style={{ color: "black", textAlign: 'center' }}>
-                  Year
-                </Text>
-              </TouchableHighlight>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <View style={{ paddingBottom: 5 }}>
+                  <Image
+                    style={{ marginTop: 5, width: 60, height: 70 }}
+                    source={require("../assets/images/recycled-paper-2.png")}
+                  />
+                </View>
+                <TouchableHighlight
+                  style={{
+                    height: 20,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    // backgroundColor: "#B8D2B9",
+                    backgroundColor: "#33CC66",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                  onPress={() => incrementTrash("paper")}
+                >
+                  <Text style={{ fontSize: 25 }}>+</Text>
+                </TouchableHighlight>
+              </View>
+
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <View style={{ paddingBottom: 5 }}>
+                  <Image
+                    style={{
+                      marginTop: 5,
+                      width: 80,
+                      height: 50,
+                      marginBottom: 10,
+                      marginTop: 15
+                    }}
+                    source={require("../assets/images/recycled-rest-4.png")}
+                  />
+                </View>
+                <TouchableHighlight
+                  style={{
+                    height: 30,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    // backgroundColor: "#B8D2B9",
+                    backgroundColor: "#66FF66",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                  onPress={() => incrementTrash("rest")}
+                >
+                  <Text style={{ fontSize: 25 }}>+</Text>
+                </TouchableHighlight>
+              </View>
             </View>
           </View>
 
+          <View
+            style={{
+              backgroundColor: "#B8D2B9",
+              marginLeft: 20,
+              marginRight: 20,
+              marginTop: 10,
+              borderRadius: 10
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  textAlign: "left",
+                  marginLeft: 20,
+                  marginRight: 20,
+                  marginBottom: 10,
+                  marginTop: 10
+                }}
+              >
+                Press on the different time buttons to change the time frame for
+                your thrown trash.
+              </Text>
+            </View>
+
+            <View style={styles.dateContainer}>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <TouchableHighlight
+                  style={{
+                    height: 30,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    backgroundColor: "white",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text style={{ color: "black", textAlign: "center" }}>
+                    Week
+                  </Text>
+                </TouchableHighlight>
+              </View>
+
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <TouchableHighlight
+                  style={{
+                    height: 30,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    backgroundColor: "#33CC66",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text style={{ color: "white", textAlign: "center" }}>
+                    Month
+                  </Text>
+                </TouchableHighlight>
+              </View>
+
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <TouchableHighlight
+                  style={{
+                    height: 30,
+                    width: 100,
+                    borderRadius: 10,
+                    borderWidth: 0.5,
+                    backgroundColor: "white",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text style={{ color: "black", textAlign: "center" }}>
+                    Year
+                  </Text>
+                </TouchableHighlight>
+              </View>
+            </View>
           </View>
 
           <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -390,11 +451,7 @@ export default function MyStatScreen(props) {
                 marginTop: 80
               }}
             >
-              <Text
-                style={{ color: "white", padding: 10 }}
-              >
-                Sign out
-              </Text>
+              <Text style={{ color: "white", padding: 10 }}>Sign out</Text>
             </TouchableHighlight>
           </View>
         </ScrollView>
@@ -448,6 +505,13 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
+  },
+
+  statusContainer: {
+    //backgroundColor: "#B8D2B9",
+    color: "white",
+    flex: 1,
+    flexDirection: "row"
   },
   throwThrashContainer: {
     //backgroundColor: "#B8D2B9",
