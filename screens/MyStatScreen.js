@@ -46,6 +46,27 @@ export default function MyStatScreen(props) {
     { type: "rest", trashbags: countRest, fill: "#66FF66" }
   ];
 
+  const intialAchievements = {
+    firstAchievement: {
+      level: 1,
+      message: "Amazing job",
+      isAchieved: false,
+      showDetails: false,
+      details: "Just getting started",
+      background: "#66FF66"
+    },
+    secondAchievement: {
+      level: 2,
+      message: "Wow, amazing job",
+      isAchieved: false,
+      showDetails: false,
+      details: "On your way!",
+      background: "#33CC66"
+    }
+  };
+
+  const [achievements, setAchievements] = useState(intialAchievements);
+
   clearCounts = () => {
     setPlastic(0);
     setPaper(0);
@@ -56,16 +77,22 @@ export default function MyStatScreen(props) {
     let achievement = {};
     let isAchieved = false;
     if (countPlastic === 1 && countPaper === 1 && countRest === 1) {
-      achievement = {
-        level: 1,
-        message: "Great job"
-      };
+      achievement = achievements.firstAchievement;
+      achievement.isAchieved = true;
+
+      setAchievements(prevAchievements => ({
+        ...prevAchievements,
+        firstAchievement: achievement
+      }));
+
       isAchieved = true;
     } else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
-      achievement = {
-        level: 2,
-        message: "Amazing job"
-      };
+      achievement = achievements.secondAchievement;
+      achievement.isAchieved = true;
+      setAchievements(prevAchievements => ({
+        ...prevAchievements,
+        secondAchievement: achievement
+      }));
       isAchieved = true;
     }
 
@@ -248,47 +275,6 @@ export default function MyStatScreen(props) {
             >
               To register thrown trash press the '+' for the correct trash type.
             </Text>
-
-            {/* <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "space-around",
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 0
-              }}
-            >
-              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
-                Plastic
-              </Text>
-              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
-                Paper
-              </Text>
-              <Text style={{ fontSize: 20, textDecorationLine: "underline" }}>
-                Rest
-              </Text>
-            </View>
-
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "space-around",
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
-              }}
-            >
-              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                {countPlastic}
-              </Text>
-              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                {countPaper}
-              </Text>
-              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                {countRest}
-              </Text>
-            </View> */}
 
             <VictoryChart
               domainPadding={17}
@@ -480,7 +466,95 @@ export default function MyStatScreen(props) {
               </View>
             </View>
           </View>
+          <View style={styles.throwThrashContainer}>
+            <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                paddingLeft: 20,
+                fontWeight: "bold"
+                //color: "#6E6E6E"
+              }}
+            >
+              My badges
+            </Text>
+            <View style={styles.statusContainer}>
+              {Object.keys(achievements).map(
+                achievementKey =>
+                  achievements[achievementKey].isAchieved && (
+                    <View style={styles.buttonContainer}>
+                      <View
+                        style={{
+                          justifyContent: "center",
+                          alignItems: "center"
+                        }}
+                      >
+                        <TouchableHighlight
+                          style={{
+                            borderRadius: 10,
+                            borderWidth: 0.5,
 
+                            // backgroundColor: "#B8D2B9",
+                            backgroundColor: achievements[achievementKey]
+                              .background
+                              ? achievements[achievementKey].background
+                              : "grey",
+                            flex: 1,
+                            padding: 15,
+                            justifyContent: "center",
+                            alignItems: "center"
+                          }}
+                          onPress={() => {
+                            setAchievements(prevAchievements => ({
+                              ...prevAchievements,
+                              [achievementKey]: {
+                                ...prevAchievements[achievementKey],
+                                showDetails: !prevAchievements[achievementKey]
+                                  .showDetails
+                              }
+                            }));
+                          }}
+                        >
+                          <View>
+                            <Text
+                              style={{
+                                fontSize: 15,
+                                fontWeight: "bold"
+                              }}
+                            >
+                              {achievementKey}
+                            </Text>
+                            {achievements[achievementKey].showDetails && (
+                              <View
+                                style={{
+                                  marginTop: 10,
+                                  backgroundColor: "white",
+                                  color: "black",
+                                  borderRadius: 5,
+                                  opacity: 0.9,
+                                  paddingTop: 10
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    fontSize: 15
+                                  }}
+                                >
+                                  {achievements[achievementKey].details}
+                                </Text>
+                              </View>
+                            )}
+                          </View>
+                        </TouchableHighlight>
+                      </View>
+                    </View>
+                  )
+              )}
+            </View>
+          </View>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TouchableHighlight
               onPress={() => {
