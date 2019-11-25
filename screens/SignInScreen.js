@@ -14,12 +14,12 @@ import {
 } from "react-native";
 
 import MyStatScreen from "./MyStatScreen";
-
+import { CheckBox } from "react-native-elements";
 import { MonoText } from "../components/StyledText";
 
 export default function SignInScreen(props) {
   [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  [checkedRemember, setCheckedRemember] = useState(false);
   const SignInContent = (
     <View style={styles.container}>
       <ScrollView
@@ -32,7 +32,6 @@ export default function SignInScreen(props) {
             style={styles.incrementButtonImage}
           />
         </View>
-
         <View>
           <Text
             style={{
@@ -47,7 +46,6 @@ export default function SignInScreen(props) {
             {"WASTE MANAGER"}
           </Text>
         </View>
-
         <View
           style={{
             marginTop: 20,
@@ -57,7 +55,6 @@ export default function SignInScreen(props) {
             marginLeft: 60
           }}
         />
-
         <View style={styles.getStartedContainer}>
           <Text
             style={{
@@ -73,7 +70,6 @@ export default function SignInScreen(props) {
             STOCKHOLM ROYAL SEAPORT
           </Text>
         </View>
-
         <View
           style={{
             marginTop: 10,
@@ -95,7 +91,6 @@ export default function SignInScreen(props) {
             underlineColorAndroid="transparent"
           />
         </View>
-
         <View
           style={{
             marginLeft: 60,
@@ -117,6 +112,19 @@ export default function SignInScreen(props) {
             underlineColorAndroid="transparent"
           />
         </View>
+        <CheckBox
+          title="Remember me"
+          checked={checkedRemember}
+          onPress={() => setCheckedRemember(prevState => !prevState)}
+          containerStyle={{
+            marginLeft: 60,
+            marginRight: 60,
+            borderRadius: 10,
+            backgroundColor: "#339933"
+          }}
+          textStyle={{ color: "white", fontWeight: "normal" }}
+          checkedColor="white"
+        />
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <TouchableHighlight
             onPress={() => setIsLoggedIn(true)}
@@ -137,7 +145,6 @@ export default function SignInScreen(props) {
             <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
         </View>
-
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Text style={{ marginTop: 20, textAlign: "center", color: "white" }}>
             Forgot password?
