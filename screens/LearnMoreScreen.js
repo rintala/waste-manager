@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 
+import { Video } from "expo-av";
+
 export default function LearnMoreScreen() {
   return (
     <ImageBackground
@@ -40,7 +42,7 @@ export default function LearnMoreScreen() {
               fontSize: 20,
               paddingBottom: 10,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -51,7 +53,7 @@ export default function LearnMoreScreen() {
               marginBottom: 5,
               fontSize: 14,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -68,7 +70,7 @@ export default function LearnMoreScreen() {
                 style={{
                   fontSize: 14,
                   fontFamily:
-                    Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                    Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
                   // color: "#6E6E6E"
                 }}
               >
@@ -81,7 +83,7 @@ export default function LearnMoreScreen() {
               marginTop: 5,
               fontSize: 14,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -143,7 +145,7 @@ export default function LearnMoreScreen() {
               fontSize: 20,
               paddingBottom: 10,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -154,7 +156,7 @@ export default function LearnMoreScreen() {
               marginBottom: 5,
               fontSize: 14,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -174,7 +176,7 @@ export default function LearnMoreScreen() {
                 style={{
                   fontSize: 14,
                   fontFamily:
-                    Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                    Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
                   // color: "#6E6E6E"
                 }}
               >
@@ -231,6 +233,31 @@ export default function LearnMoreScreen() {
             )}
           />
         </View>
+        <View style={styles.aboutContainer}>
+          <Text
+            style={{
+              fontSize: 20,
+              paddingBottom: 10,
+              fontFamily:
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+              color: "black"
+            }}
+          >
+            Inspiration - the future of sorting
+          </Text>
+          <Video
+            source={{
+              uri:
+                "http://s3.amazonaws.com/digitaltrends-uploads-prod/wp-content/uploads/2018/07/oscar.mp4?_=4"
+            }}
+            rate={1.0}
+            volume={1.0}
+            isMuted={false}
+            resizeMode="cover"
+            useNativeControls
+            style={{ width: "100%", height: 200 }}
+          />
+        </View>
       </ScrollView>
     </ImageBackground>
   );
@@ -266,5 +293,12 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 20,
     borderRadius: 10
+  },
+  backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
   }
 });
