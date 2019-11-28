@@ -34,7 +34,7 @@ export default function MyStatScreen(props) {
   [isAchieved, setIsAchieved] = useState(false);
 
   const statuses = [
-    { status: "ok", color: "green" },
+    { status: "ok", color: "#33CC66" },
     { status: "disturbed", color: "yellow" },
     { status: "down", color: "red" }
   ];
@@ -173,7 +173,7 @@ export default function MyStatScreen(props) {
             style={{
               backgroundColor:
                 status === "ok"
-                  ? "green"
+                  ? "#009245"
                   : status === "disturbed"
                   ? "yellow"
                   : "red",
@@ -183,7 +183,8 @@ export default function MyStatScreen(props) {
               padding: 20,
               marginTop: 5,
               marginLeft: 20,
-              marginRight: 20
+              marginRight: 20,
+							marginBottom: 5
             }}
           >
             <View style={styles.statusContainer}>

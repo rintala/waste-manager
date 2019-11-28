@@ -112,19 +112,7 @@ export default function SignInScreen(props) {
             underlineColorAndroid="transparent"
           />
         </View>
-        <CheckBox
-          title="Remember me"
-          checked={checkedRemember}
-          onPress={() => setCheckedRemember(prevState => !prevState)}
-          containerStyle={{
-            marginLeft: 60,
-            marginRight: 60,
-            borderRadius: 10,
-            backgroundColor: "#339933"
-          }}
-          textStyle={{ color: "white", fontWeight: "normal" }}
-          checkedColor="white"
-        />
+
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <TouchableHighlight
             onPress={() => setIsLoggedIn(true)}
@@ -144,9 +132,23 @@ export default function SignInScreen(props) {
           >
             <Text style={{ color: "white", padding: 10 }}>Login</Text>
           </TouchableHighlight>
+					<CheckBox
+	          title="Remember me"
+	          checked={checkedRemember}
+	          onPress={() => setCheckedRemember(prevState => !prevState)}
+	          containerStyle={{
+	            marginLeft: 60,
+	            marginRight: 60,
+	            borderRadius: 10,
+							borderWidth: 0,
+	            backgroundColor: "#B8D2B9"
+	          }}
+	          textStyle={{ color: "white", fontWeight: "normal" }}
+	          checkedColor="white"
+	        />
         </View>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Text style={{ marginTop: 20, textAlign: "center", color: "white" }}>
+          <Text style={{ marginTop: 50, textAlign: "center", color: "white" }}>
             Forgot password?
           </Text>
         </View>
