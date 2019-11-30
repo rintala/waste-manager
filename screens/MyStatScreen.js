@@ -62,6 +62,22 @@ export default function MyStatScreen(props) {
       showDetails: false,
       details: "On your way!",
       background: "#33CC66"
+    },
+		thirdAchievement: {
+      level: 3,
+      message: "I'm impressed!",
+      isAchieved: false,
+      showDetails: false,
+      details: "Aiming high!",
+      background: "#33CC66"
+    },
+		fourthAchievement: {
+      level: 4,
+      message: "Lets go champ!",
+      isAchieved: false,
+      showDetails: false,
+      details: "On the top!",
+      background: "#33CC66"
     }
   };
 
@@ -92,6 +108,24 @@ export default function MyStatScreen(props) {
       setAchievements(prevAchievements => ({
         ...prevAchievements,
         secondAchievement: achievement
+      }));
+      isAchieved = true;
+    }
+		else if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
+      achievement = achievements.thirdAchievement;
+      achievement.isAchieved = true;
+      setAchievements(prevAchievements => ({
+        ...prevAchievements,
+        thirdAchievement: achievement
+      }));
+      isAchieved = true;
+    }
+		else if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
+      achievement = achievements.fourthAchievement;
+      achievement.isAchieved = true;
+      setAchievements(prevAchievements => ({
+        ...prevAchievements,
+        fourthAchievement: achievement
       }));
       isAchieved = true;
     }
