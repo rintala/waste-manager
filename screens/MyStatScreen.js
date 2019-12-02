@@ -30,6 +30,8 @@ export default function MyStatScreen(props) {
   const [countPlastic, setPlastic] = useState(1);
   const [countPaper, setPaper] = useState(1);
   const [countRest, setRest] = useState(1);
+  const [ratio, setRatio] = useState(null);
+
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
 
@@ -63,7 +65,7 @@ export default function MyStatScreen(props) {
       details: "On your way!",
       background: "#33CC66"
     },
-		thirdAchievement: {
+    thirdAchievement: {
       level: 3,
       message: "I'm impressed!",
       isAchieved: false,
@@ -71,7 +73,7 @@ export default function MyStatScreen(props) {
       details: "Aiming high!",
       background: "#33CC66"
     },
-		fourthAchievement: {
+    fourthAchievement: {
       level: 4,
       message: "Lets go champ!",
       isAchieved: false,
@@ -94,40 +96,60 @@ export default function MyStatScreen(props) {
     let isAchieved = false;
     if (countPlastic === 1 && countPaper === 1 && countRest === 1) {
       achievement = achievements.firstAchievement;
-      achievement.isAchieved = true;
 
-      setAchievements(prevAchievements => ({
-        ...prevAchievements,
-        firstAchievement: achievement
-      }));
-
-      isAchieved = true;
+      if (achievement.isAchieved === false) {
+        achievement.isAchieved = true;
+        setAchievements(prevAchievements => ({
+          ...prevAchievements,
+          firstAchievement: achievement
+        }));
+        isAchieved = true;
+      } else {
+        isAchieved = false;
+      }
     } else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
       achievement = achievements.secondAchievement;
-      achievement.isAchieved = true;
-      setAchievements(prevAchievements => ({
-        ...prevAchievements,
-        secondAchievement: achievement
-      }));
-      isAchieved = true;
-    }
-		else if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
+
+      if (achievement.isAchieved === false) {
+        achievement.isAchieved = true;
+        setAchievements(prevAchievements => ({
+          ...prevAchievements,
+          secondAchievement: achievement
+        }));
+        isAchieved = true;
+      } else {
+        isAchieved = false;
+      }
+    } else if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
       achievement = achievements.thirdAchievement;
-      achievement.isAchieved = true;
-      setAchievements(prevAchievements => ({
-        ...prevAchievements,
-        thirdAchievement: achievement
-      }));
-      isAchieved = true;
-    }
-		else if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
+      if (achievement.isAchieved === false) {
+        achievement.isAchieved = true;
+        setAchievements(prevAchievements => ({
+          ...prevAchievements,
+          thirdAchievement: achievement
+        }));
+        isAchieved = true;
+      } else {
+        isAchieved = false;
+      }
+    } else if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
       achievement = achievements.fourthAchievement;
-      achievement.isAchieved = true;
-      setAchievements(prevAchievements => ({
-        ...prevAchievements,
-        fourthAchievement: achievement
-      }));
-      isAchieved = true;
+
+      if (achievement.isAchieved === false) {
+        achievement.isAchieved = true;
+        if (achievement.isAchieved === false) {
+          achievement.isAchieved = true;
+          setAchievements(prevAchievements => ({
+            ...prevAchievements,
+            fourthAchievement: achievement
+          }));
+          isAchieved = true;
+        } else {
+          isAchieved = false;
+        }
+      } else {
+        isAchieved = false;
+      }
     }
 
     return [isAchieved, achievement];
@@ -141,6 +163,15 @@ export default function MyStatScreen(props) {
     } else if (typeOfTrash === "rest") {
       setRest(prevCountRest => ++prevCountRest);
     }
+
+    this.computeRatio();
+  };
+
+  computeRatio = () => {
+    let newRatio = (countPlastic + countPaper) / countRest;
+    console.log("newRatio", newRatio);
+
+    return newRatio;
   };
 
   reportUpdatedStatus = newStatus => {
@@ -218,7 +249,7 @@ export default function MyStatScreen(props) {
               marginTop: 5,
               marginLeft: 20,
               marginRight: 20,
-							marginBottom: 5
+              marginBottom: 5
             }}
           >
             <View style={styles.statusContainer}>
@@ -501,34 +532,51 @@ export default function MyStatScreen(props) {
               </View>
             </View>
           </View>
-					<View style={styles.throwThrashContainer}>
-					<Text
-						style={{
-							//color: "#6E6E6E",
-							fontSize: 20,
-							fontFamily:
-								Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-							paddingBottom: 10,
-							paddingLeft: 20,
-							fontWeight: "bold"
-							//color: "#6E6E6E"
-						}}
-					>
-						My thrown trash distribution
-					</Text>
-					<View>
-					<VictoryPie
-						domainPadding={17}
-						width={350}
-						height={300}
-						colorScale={["#009245", "#33CC66", "#66FF66"]}
-						data={[
-							{ x: "Rest", y: countRest },
-							{ x: "Paper", y: countPaper },
-							{ x: "Plasict", y: countPlastic }
-						]}
-					/>
-					</View></View>
+          <View style={styles.throwThrashContainer}>
+            <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                paddingLeft: 20,
+                fontWeight: "bold"
+                //color: "#6E6E6E"
+              }}
+            >
+              My thrown trash distribution
+            </Text>
+            <View>
+              <VictoryPie
+                domainPadding={17}
+                width={350}
+                height={300}
+                colorScale={["#009245", "#33CC66", "#66FF66"]}
+                data={[
+                  { x: "Rest", y: countRest },
+                  { x: "Paper", y: countPaper },
+                  { x: "Plasict", y: countPlastic }
+                ]}
+              />
+            </View>
+          </View>
+          <View style={styles.throwThrashContainer}>
+            <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                paddingLeft: 20,
+                fontWeight: "bold"
+                //color: "#6E6E6E"
+              }}
+            >
+              My level
+            </Text>
+          </View>
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
@@ -618,6 +666,7 @@ export default function MyStatScreen(props) {
               )}
             </View>
           </View>
+
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TouchableHighlight
               onPress={() => {

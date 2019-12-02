@@ -90,6 +90,10 @@ export default function LearnMoreScreen() {
             For more information, read instructions from yours waste mill
             manufacturer.
           </Text>
+          <Image
+            style={{ marginTop: 10, width: "100%", height: 180 }}
+            source={require("../assets/images/food.jpg")}
+          />
         </View>
 
         <View style={styles.aboutContainer2}>
@@ -136,6 +140,10 @@ export default function LearnMoreScreen() {
                 {item.key}
               </Text>
             )}
+          />
+          <Image
+            style={{ marginTop: 10, width: "100%", height: 180 }}
+            source={require("../assets/images/paper.jpg")}
           />
         </View>
 
@@ -184,6 +192,10 @@ export default function LearnMoreScreen() {
               </Text>
             )}
           />
+          <Image
+            style={{ marginTop: 10, width: "100%" }}
+            source={require("../assets/images/plastic.jpg")}
+          />
         </View>
 
         <View style={styles.aboutContainer2}>
@@ -231,6 +243,10 @@ export default function LearnMoreScreen() {
                 {item.key}
               </Text>
             )}
+          />
+          <Image
+            style={{ marginTop: 10, width: "100%" }}
+            source={require("../assets/images/house-hold.jpg")}
           />
         </View>
         <View style={styles.aboutContainer}>
