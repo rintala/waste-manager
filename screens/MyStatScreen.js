@@ -32,6 +32,7 @@ export default function MyStatScreen(props) {
   const [countRest, setRest] = useState(1);
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
+  [yourLevel, setYourLevel] = useState('Silver');
 
   const statuses = [
     { status: "ok", color: "#33CC66" },
@@ -529,6 +530,33 @@ export default function MyStatScreen(props) {
 						]}
 					/>
 					</View></View>
+
+          <View>
+          <View style={styles.throwThrashContainer}>
+            <Text
+              style={{
+                //color: "#6E6E6E",
+                fontSize: 20,
+                fontFamily:
+                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                paddingBottom: 10,
+                paddingLeft: 20,
+                fontWeight: "bold"
+                //color: "#6E6E6E"
+              }}
+            >
+              My level
+            </Text>
+              <Text style={{
+                paddingLeft: 20,
+                paddingBottom: 10
+                }}>
+                Your current level is: {yourLevel}
+              </Text>
+            </View>
+          </View>
+
+
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
