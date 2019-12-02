@@ -13,7 +13,8 @@ import {
   VictoryChart,
   VictoryLine,
   VictoryPie,
-  VictoryTheme
+  VictoryTheme,
+	VictoryLegend
 } from "victory-native";
 
 const data = [
@@ -61,7 +62,7 @@ export default function GeneralInfoScreen() {
               fontWeight: "bold"
             }}
           >
-            Thrown trash in SRS - November
+            Thrown trash in SRS - 2019
           </Text>
 
           <Text
@@ -79,7 +80,7 @@ export default function GeneralInfoScreen() {
 
           {Platform.OS === "android" ? (
             <VictoryChart domainPadding={17} width={350} height={300}>
-              <VictoryBar
+						  <VictoryBar
                 animate={{ duration: 400, onStart: { duration: 1000 } }}
                 style={{
                   data: {
@@ -100,7 +101,26 @@ export default function GeneralInfoScreen() {
               />
             </VictoryChart>
           ) : (
-            <VictoryChart domainPadding={17} width={350} height={300}>
+            <VictoryChart style={{
+    parent: {
+      paddingTop: 20
+    }
+  }} domainPadding={17} width={350} height={300}>
+						<VictoryLegend x={25} y={-10}
+							 title="Legend"
+							 centerTitle
+							 orientation="horizontal"
+							 gutter={20}
+							 style={{ title: {fontSize: 20 }}}
+
+							 data={[
+								 { name: "Plastic", symbol: { fill: "#009245"} },
+								 { name: "Paper", symbol: { fill: "#66FF66" } },
+								 { name: "Rest", symbol: { fill: "#33CC66" } },
+								 { name: "Total", symbol: { fill: "black" } }
+							 ]}
+						 />
+
               <VictoryLine
                 style={{ data: { stroke: "#009245" } }}
                 /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */

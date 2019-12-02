@@ -27,9 +27,9 @@ import {
 import { isFor } from "@babel/types";
 
 export default function MyStatScreen(props) {
-  const [countPlastic, setPlastic] = useState(0);
-  const [countPaper, setPaper] = useState(0);
-  const [countRest, setRest] = useState(0);
+  const [countPlastic, setPlastic] = useState(1);
+  const [countPaper, setPaper] = useState(1);
+  const [countRest, setRest] = useState(1);
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
 
@@ -294,7 +294,7 @@ export default function MyStatScreen(props) {
                 //color: "#6E6E6E"
               }}
             >
-              My thrown trash - November
+              My thrown trash - December
             </Text>
 
             <Text
@@ -501,6 +501,34 @@ export default function MyStatScreen(props) {
               </View>
             </View>
           </View>
+					<View style={styles.throwThrashContainer}>
+					<Text
+						style={{
+							//color: "#6E6E6E",
+							fontSize: 20,
+							fontFamily:
+								Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+							paddingBottom: 10,
+							paddingLeft: 20,
+							fontWeight: "bold"
+							//color: "#6E6E6E"
+						}}
+					>
+						My thrown trash distribution
+					</Text>
+					<View>
+					<VictoryPie
+						domainPadding={17}
+						width={350}
+						height={300}
+						colorScale={["#009245", "#33CC66", "#66FF66"]}
+						data={[
+							{ x: "Rest", y: countRest },
+							{ x: "Paper", y: countPaper },
+							{ x: "Plasict", y: countPlastic }
+						]}
+					/>
+					</View></View>
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
@@ -654,9 +682,7 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   buttonsContainer: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
+    padding: 10,
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
