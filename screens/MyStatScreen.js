@@ -523,9 +523,9 @@ export default function MyStatScreen(props) {
 						height={300}
 						colorScale={["#009245", "#33CC66", "#66FF66"]}
 						data={[
-							{ x: "Rest", y: countRest },
+							{ x: "Plastic", y: countPlastic },
 							{ x: "Paper", y: countPaper },
-							{ x: "Plasict", y: countPlastic }
+							{ x: "Rest", y: countRest }
 						]}
 					/>
 					</View></View>

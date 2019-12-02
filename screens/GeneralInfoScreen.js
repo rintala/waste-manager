@@ -115,8 +115,8 @@ export default function GeneralInfoScreen() {
 
 							 data={[
 								 { name: "Plastic", symbol: { fill: "#009245"} },
-								 { name: "Paper", symbol: { fill: "#66FF66" } },
-								 { name: "Rest", symbol: { fill: "#33CC66" } },
+								 { name: "Paper", symbol: { fill: "#33CC66" } },
+								 { name: "Rest", symbol: { fill: "#66FF66" } },
 								 { name: "Total", symbol: { fill: "black" } }
 							 ]}
 						 />
@@ -125,44 +125,60 @@ export default function GeneralInfoScreen() {
                 style={{ data: { stroke: "#009245" } }}
                 /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */
                 data={[
-                  { x: "Jan", y: 3 },
-                  { x: "Feb", y: 4 },
-                  { x: "Mar", y: 3 },
-                  { x: "Apr", y: 5 },
-                  { x: "May", y: 2 }
+                  { x: "Jan", y: 1 },
+                  { x: "Feb", y: 1.5 },
+                  { x: "Mar", y: 1 },
+                  { x: "Apr", y: 1 },
+                  { x: "May", y: 3.5 },
+									{ x: "Jun", y: 1 },
+									{ x: "Jul", y: 2 },
+									{ x: "Aug", y: 1 },
+									{ x: "Sept", y: 1 }
                 ]}
               />
               <VictoryLine
                 style={{ data: { stroke: "#33CC66" } }}
                 /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
                 data={[
-                  { x: "Jan", y: 4 },
-                  { x: "Feb", y: 6 },
-                  { x: "Mar", y: 4 },
-                  { x: "Apr", y: 2 },
-                  { x: "May", y: 3 }
+									{ x: "Jan", y: 2.5 },
+                  { x: "Feb", y: 3 },
+                  { x: "Mar", y: 1.5 },
+                  { x: "Apr", y: 2.5 },
+                  { x: "May", y: 4 },
+									{ x: "Jun", y: 2 },
+									{ x: "Jul", y: 2 },
+									{ x: "Aug", y: 1.5 },
+									{ x: "Sept", y: 1.5 }
                 ]}
               />
               <VictoryLine
                 style={{ data: { stroke: "#66FF66" } }}
                 /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
                 data={[
-                  { x: "Jan", y: 2 },
-                  { x: "Feb", y: 3 },
-                  { x: "Mar", y: 2 },
-                  { x: "Apr", y: 3 },
-                  { x: "May", y: 5 }
+                  { x: "Jan", y: 17 },
+                  { x: "Feb", y: 17 },
+                  { x: "Mar", y: 17.5 },
+                  { x: "Apr", y: 19 },
+                  { x: "May", y: 18.5 },
+									{ x: "Jun", y: 19 },
+									{ x: "Jul", y: 15 },
+									{ x: "Aug", y: 16.5 },
+									{ x: "Sept", y: 17 }
                 ]}
               />
               <VictoryLine
                 style={{ data: { stroke: "black" } }}
                 /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
                 data={[
-                  { x: "Jan", y: 9 },
-                  { x: "Feb", y: 13 },
-                  { x: "Mar", y: 9 },
-                  { x: "Apr", y: 10 },
-                  { x: "May", y: 10 }
+                  { x: "Jan", y: 20.5 },
+                  { x: "Feb", y: 21.5 },
+                  { x: "Mar", y: 20 },
+                  { x: "Apr", y: 22.5 },
+                  { x: "May", y: 26 },
+									{ x: "Jun", y: 22 },
+									{ x: "Jul", y: 19 },
+									{ x: "Aug", y: 19 },
+									{ x: "Sept", y: 19.5 }
                 ]}
               />
             </VictoryChart>
@@ -182,7 +198,7 @@ export default function GeneralInfoScreen() {
               fontWeight: "bold"
             }}
           >
-            Thrown trash in SRS - November
+            Thrown trash in SRS - December
           </Text>
 
           <VictoryPie
@@ -191,9 +207,9 @@ export default function GeneralInfoScreen() {
             height={300}
             colorScale={["#009245", "#33CC66", "#66FF66"]}
             data={[
-              { x: "Restavfall", y: 1234 },
-              { x: "Tidningar", y: 3048 },
-              { x: "Plast", y: 2600 }
+              { x: "Plastic", y: 1 },
+              { x: "Paper", y: 1.5 },
+              { x: "Rest", y: 17 }
             ]}
           />
         </View>
