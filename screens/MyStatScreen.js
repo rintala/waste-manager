@@ -533,37 +533,7 @@ export default function MyStatScreen(props) {
               </View>
             </View>
           </View>
-<<<<<<< HEAD
-          <View style={styles.throwThrashContainer}>
-            <Text
-              style={{
-                //color: "#6E6E6E",
-                fontSize: 20,
-                fontFamily:
-                  Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-                paddingBottom: 10,
-                paddingLeft: 20,
-                fontWeight: "bold"
-                //color: "#6E6E6E"
-              }}
-            >
-              My thrown trash distribution
-            </Text>
-            <View>
-              <VictoryPie
-                domainPadding={17}
-                width={350}
-                height={300}
-                colorScale={["#009245", "#33CC66", "#66FF66"]}
-                data={[
-                  { x: "Rest", y: countRest },
-                  { x: "Paper", y: countPaper },
-                  { x: "Plasict", y: countPlastic }
-                ]}
-              />
-            </View>
-          </View>
-=======
+
 					<View style={styles.throwThrashContainer}>
 					<Text
 						style={{
@@ -591,11 +561,11 @@ export default function MyStatScreen(props) {
 							{ x: "Rest", y: countRest }
 						]}
 					/>
-					</View></View>
+					</View>
+          </View>
 
-          <View>
->>>>>>> 8828790e982c3a1b8b33c319690a94c7b15e55f0
           <View style={styles.throwThrashContainer}>
+          <View>
             <Text
               style={{
                 //color: "#6E6E6E",
@@ -610,9 +580,7 @@ export default function MyStatScreen(props) {
             >
               My level
             </Text>
-<<<<<<< HEAD
           </View>
-=======
               <Text style={{
                 paddingLeft: 20,
                 paddingBottom: 10
@@ -620,10 +588,8 @@ export default function MyStatScreen(props) {
                 Your current level is: {yourLevel}
               </Text>
             </View>
-          </View>
 
 
->>>>>>> 8828790e982c3a1b8b33c319690a94c7b15e55f0
           <View style={styles.throwThrashContainer}>
             <Text
               style={{
