@@ -34,7 +34,7 @@ export default function MyStatScreen(props) {
 
   [isLoggedOut, setIsLoggedOut] = useState(false);
   [isAchieved, setIsAchieved] = useState(false);
-  [yourLevel, setYourLevel] = useState('Silver');
+  [level, setLevel] = useState("bronze");
 
   const statuses = [
     { status: "ok", color: "#33CC66" },
@@ -95,7 +95,13 @@ export default function MyStatScreen(props) {
   checkIfAchievementUnlocked = () => {
     let achievement = {};
     let isAchieved = false;
-    if (countPlastic === 1 && countPaper === 1 && countRest === 1) {
+    console.log(
+      "check if achivement is unlocked",
+      countPlastic,
+      countPaper,
+      countRest
+    );
+    if (countPlastic > 0 && countPaper > 0 && countRest > 0) {
       achievement = achievements.firstAchievement;
 
       if (achievement.isAchieved === false) {
@@ -108,7 +114,9 @@ export default function MyStatScreen(props) {
       } else {
         isAchieved = false;
       }
-    } else if (countPlastic === 2 && countPaper === 2 && countRest === 2) {
+    }
+
+    if (countPlastic > 1 && countPaper > 1 && countRest > 1) {
       achievement = achievements.secondAchievement;
 
       if (achievement.isAchieved === false) {
@@ -121,7 +129,9 @@ export default function MyStatScreen(props) {
       } else {
         isAchieved = false;
       }
-    } else if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
+    }
+
+    if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
       achievement = achievements.thirdAchievement;
       if (achievement.isAchieved === false) {
         achievement.isAchieved = true;
@@ -133,7 +143,9 @@ export default function MyStatScreen(props) {
       } else {
         isAchieved = false;
       }
-    } else if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
+    }
+
+    if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
       achievement = achievements.fourthAchievement;
 
       if (achievement.isAchieved === false) {
@@ -148,8 +160,6 @@ export default function MyStatScreen(props) {
         } else {
           isAchieved = false;
         }
-      } else {
-        isAchieved = false;
       }
     }
 
@@ -165,11 +175,12 @@ export default function MyStatScreen(props) {
       setRest(prevCountRest => ++prevCountRest);
     }
 
-    this.computeRatio();
+    setRatio(this.computeRatio());
   };
 
   computeRatio = () => {
-    let newRatio = (countPlastic + countPaper) / countRest;
+    let newRatio =
+      (countPlastic + countPaper) / (countRest + countPlastic + countPaper);
     console.log("newRatio", newRatio);
 
     return newRatio;
@@ -207,6 +218,18 @@ export default function MyStatScreen(props) {
       console.log("isAchived", isAchieved);
     }
   }, [countPlastic, countPaper, countRest]);
+
+  useEffect(() => {
+    if (ratio > 0 && ratio <= 0.15) {
+      setLevel("bronze");
+    } else if (ratio > 0.15 && ratio <= 0.3) {
+      setLevel("silver");
+    } else if (ratio > 0.3 && ratio <= 0.45) {
+      setLevel("gold");
+    } else if (ratio > 0.45) {
+      setLevel("platinum");
+    }
+  }, [ratio]);
 
   const MyStatContent = (
     <ImageBackground
@@ -534,38 +557,7 @@ export default function MyStatScreen(props) {
             </View>
           </View>
 
-					<View style={styles.throwThrashContainer}>
-					<Text
-						style={{
-							//color: "#6E6E6E",
-							fontSize: 20,
-							fontFamily:
-								Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
-							paddingBottom: 10,
-							paddingLeft: 20,
-							fontWeight: "bold"
-							//color: "#6E6E6E"
-						}}
-					>
-						My thrown trash distribution
-					</Text>
-					<View>
-					<VictoryPie
-						domainPadding={17}
-						width={350}
-						height={300}
-						colorScale={["#009245", "#33CC66", "#66FF66"]}
-						data={[
-							{ x: "Plastic", y: countPlastic },
-							{ x: "Paper", y: countPaper },
-							{ x: "Rest", y: countRest }
-						]}
-					/>
-					</View>
-          </View>
-
           <View style={styles.throwThrashContainer}>
-          <View>
             <Text
               style={{
                 //color: "#6E6E6E",
@@ -578,17 +570,49 @@ export default function MyStatScreen(props) {
                 //color: "#6E6E6E"
               }}
             >
-              My level
+              My thrown trash distribution
             </Text>
+            <View>
+              <VictoryPie
+                domainPadding={17}
+                width={350}
+                height={300}
+                colorScale={["#009245", "#33CC66", "#66FF66"]}
+                data={[
+                  { x: "Plastic", y: countPlastic },
+                  { x: "Paper", y: countPaper },
+                  { x: "Rest", y: countRest }
+                ]}
+              />
+            </View>
           </View>
-              <Text style={{
-                paddingLeft: 20,
-                paddingBottom: 10
-                }}>
-                Your current level is: {yourLevel}
+
+          <View style={styles.throwThrashContainer}>
+            <View>
+              <Text
+                style={{
+                  //color: "#6E6E6E",
+                  fontSize: 20,
+                  fontFamily:
+                    Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                  paddingBottom: 10,
+                  paddingLeft: 20,
+                  fontWeight: "bold"
+                  //color: "#6E6E6E"
+                }}
+              >
+                My level
               </Text>
             </View>
-
+            <Text
+              style={{
+                paddingLeft: 20,
+                paddingBottom: 10
+              }}
+            >
+              Your current level is: {level}
+            </Text>
+          </View>
 
           <View style={styles.throwThrashContainer}>
             <Text
