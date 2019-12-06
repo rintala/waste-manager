@@ -267,13 +267,13 @@ export default function MyStatScreen(props) {
                   ? "yellow"
                   : "red",
               opacity: 0.9,
-              paddingTop: 20,
+              // paddingTop: 20,
               borderRadius: 10,
               padding: 20,
               marginTop: 5,
               marginLeft: 20,
               marginRight: 20,
-              marginBottom: 5
+              // marginBottom: 5
             }}
           >
             <View style={styles.statusContainer}>
@@ -804,7 +804,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     //paddingBottom: 20,
     //padding: 20,
-    borderRadius: 10
+    borderRadius: 10,
+    marginTop: 10
   },
   throwThrashContainerGreen: {
     backgroundColor: "#B8D2B9",
@@ -816,7 +817,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     //paddingBottom: 20,
     //padding: 20,
-    borderRadius: 10
+    borderRadius: 10,
+    marginTop: 10
   },
   dateContainer: {
     // backgroundColor: "white",
