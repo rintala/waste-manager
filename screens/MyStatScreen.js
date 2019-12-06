@@ -587,7 +587,7 @@ export default function MyStatScreen(props) {
             </View>
           </View>
 
-          <View style={styles.throwThrashContainer}>
+          <View style={styles.throwThrashContainerGreen}>
             <View>
               <Text
                 style={{
@@ -797,6 +797,18 @@ const styles = StyleSheet.create({
   throwThrashContainer: {
     //backgroundColor: "#B8D2B9",
     backgroundColor: "white",
+    marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    opacity: 0.9,
+    paddingTop: 20,
+    //paddingBottom: 20,
+    //padding: 20,
+    borderRadius: 10
+  },
+  throwThrashContainerGreen: {
+    backgroundColor: "#B8D2B9",
+    // backgroundColor: "white",
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
