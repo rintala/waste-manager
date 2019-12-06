@@ -722,7 +722,7 @@ export default function MyStatScreen(props) {
                 flex: 1,
                 justifyContent: "flex-end",
                 marginBottom: 0,
-                marginTop: 80
+                marginTop: 30
               }}
             >
               <Text style={{ color: "white", padding: 10 }}>Sign out</Text>
