@@ -75,7 +75,7 @@ export default function GeneralInfoScreen() {
               // color: "#6E6E6E"
             }}
           >
-            Total number of trashbags thrown, includes plastic, paper and rest.
+            Total amount of plastic, paper and rest trash thrown i SRS.
           </Text>
 
           {Platform.OS === "android" ? (
@@ -107,7 +107,7 @@ export default function GeneralInfoScreen() {
     }
   }} domainPadding={17} width={350} height={300}>
 						<VictoryLegend x={25} y={-10}
-							 title="Legend"
+							//  title="Legend"
 							 centerTitle
 							 orientation="horizontal"
 							 gutter={20}
