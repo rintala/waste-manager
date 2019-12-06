@@ -106,7 +106,7 @@ export default function GeneralInfoScreen() {
       paddingTop: 20
     }
   }} domainPadding={17} width={350} height={300}>
-						<VictoryLegend x={25} y={-10}
+						<VictoryLegend x={25} y={0}
 							//  title="Legend"
 							 centerTitle
 							 orientation="horizontal"
@@ -198,7 +198,7 @@ export default function GeneralInfoScreen() {
               fontWeight: "bold"
             }}
           >
-            Thrown trash in SRS - December
+            Trash distribution in SRS - December
           </Text>
 
           <VictoryPie
