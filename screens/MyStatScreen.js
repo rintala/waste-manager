@@ -293,10 +293,10 @@ export default function MyStatScreen(props) {
                 Station status
               </Text>
 
-              <Image
+              {/*  <Image
                 style={{ width: 30, height: 30 }}
                 source={require("../assets/images/recycled-bin.png")}
-              />
+              /> */}
               <Text
                 style={{
                   color: status === "disturbed" ? "black" : "white",

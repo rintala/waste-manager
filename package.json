@@ -11,6 +11,9 @@
   "jest": {
     "preset": "jest-expo"
   },
+  "assetBundlePatterns": [
+    "assets/images/*"
+  ],
   "dependencies": {
     "@expo/samples": "~3.0.3",
     "@expo/vector-icons": "^10.0.3",

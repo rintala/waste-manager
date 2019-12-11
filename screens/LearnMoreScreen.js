@@ -92,7 +92,10 @@ export default function LearnMoreScreen() {
           </Text>
           <Image
             style={{ marginTop: 10, width: "100%", height: 180 }}
-            source={require("../assets/images/food.jpg")}
+            source={{
+              uri:
+                "https://www.sustainableconsumption.se/wp-content/uploads/sites/34/2019/04/15951717452_db57fddd28_b-1024x675.jpg"
+            }}
           />
         </View>
 
@@ -143,7 +146,10 @@ export default function LearnMoreScreen() {
           />
           <Image
             style={{ marginTop: 10, width: "100%", height: 180 }}
-            source={require("../assets/images/paper.jpg")}
+            source={{
+              uri:
+                "https://content3.jdmagicbox.com/comp/lucknow/p1/0522px522.x522.130417143027.r8p1/catalogue/green-earth-recycling-chinhat-lucknow-waste-paper-dealers-4eqhmcc.jpg"
+            }}
           />
         </View>
 
@@ -193,8 +199,11 @@ export default function LearnMoreScreen() {
             )}
           />
           <Image
-            style={{ marginTop: 10, width: "100%" }}
-            source={require("../assets/images/plastic.jpg")}
+            style={{ marginTop: 10, width: "100%", height: 180 }}
+            source={{
+              uri:
+                "https://upload.wikimedia.org/wikipedia/commons/b/b2/Plastic_household_items.jpg"
+            }}
           />
         </View>
 
@@ -245,8 +254,10 @@ export default function LearnMoreScreen() {
             )}
           />
           <Image
-            style={{ marginTop: 10, width: "100%" }}
-            source={require("../assets/images/house-hold.jpg")}
+            style={{ marginTop: 10, width: "100%", height: 180 }}
+            source={{
+              uri: "https://images.wisegeek.com/garbage-on-street.jpg"
+            }}
           />
         </View>
         <View style={styles.aboutContainer}>
