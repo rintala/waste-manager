@@ -290,7 +290,7 @@ export default function MyStatScreen(props) {
                   fontSize: "24px"
                 }}
               >
-                Status
+                Station status
               </Text>
 
               <Image
@@ -616,14 +616,38 @@ export default function MyStatScreen(props) {
                 My level
               </Text>
             </View>
-            <Text
-              style={{
-                paddingLeft: 20,
-                paddingBottom: 10
-              }}
-            >
-              Your current level is: {level}
-            </Text>
+            <View style={{ paddingLeft: 20, paddingBottom: 10 }}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  alignItems: "center"
+                }}
+              >
+                <View
+                  style={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: 20,
+                    borderWidth: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor:
+                      level === "bronze"
+                        ? "#A77044"
+                        : level === "silver"
+                        ? "#A7A7AD"
+                        : level === "gold"
+                        ? "#D6AF36"
+                        : level === "platinum"
+                        ? "#cbc7c5"
+                        : "green"
+                  }}
+                >
+                  <Text>{level} </Text>
+                </View>
+              </View>
+            </View>
           </View>
 
           <View style={styles.throwThrashContainer}>
@@ -685,7 +709,7 @@ export default function MyStatScreen(props) {
                                 fontWeight: "bold"
                               }}
                             >
-                              {achievementKey}
+                              {achievements[achievementKey].message}
                             </Text>
                             {achievements[achievementKey].showDetails && (
                               <View
@@ -695,7 +719,7 @@ export default function MyStatScreen(props) {
                                   color: "black",
                                   borderRadius: 5,
                                   opacity: 0.9,
-                                  paddingTop: 10
+                                  padding: 15
                                 }}
                               >
                                 <Text

@@ -14,7 +14,8 @@ import {
   VictoryLine,
   VictoryPie,
   VictoryTheme,
-	VictoryLegend
+  VictoryLegend,
+  VictoryAxis
 } from "victory-native";
 
 const data = [
@@ -71,7 +72,7 @@ export default function GeneralInfoScreen() {
               paddingBottom: 5,
               paddingLeft: 20,
               fontFamily:
-                Platform.OS === "android" ? "Roboto" : "Helvetica Neue",
+                Platform.OS === "android" ? "Roboto" : "Helvetica Neue"
               // color: "#6E6E6E"
             }}
           >
@@ -80,7 +81,13 @@ export default function GeneralInfoScreen() {
 
           {Platform.OS === "android" ? (
             <VictoryChart domainPadding={17} width={350} height={300}>
-						  <VictoryBar
+              <VictoryAxis
+                style={{ axisLabel: { padding: 32 } }}
+                dependentAxis
+                label="1000 kg"
+              />
+              <VictoryAxis />
+              <VictoryBar
                 animate={{ duration: 400, onStart: { duration: 1000 } }}
                 style={{
                   data: {
@@ -101,26 +108,37 @@ export default function GeneralInfoScreen() {
               />
             </VictoryChart>
           ) : (
-            <VictoryChart style={{
-    parent: {
-      paddingTop: 20
-    }
-  }} domainPadding={17} width={350} height={300}>
-						<VictoryLegend x={25} y={0}
-							//  title="Legend"
-							 centerTitle
-							 orientation="horizontal"
-							 gutter={20}
-							 style={{ title: {fontSize: 20 }}}
-
-							 data={[
-								 { name: "Plastic", symbol: { fill: "#009245"} },
-								 { name: "Paper", symbol: { fill: "#33CC66" } },
-								 { name: "Rest", symbol: { fill: "#66FF66" } },
-								 { name: "Total", symbol: { fill: "black" } }
-							 ]}
-						 />
-
+            <VictoryChart
+              style={{
+                parent: {
+                  paddingTop: 20
+                }
+              }}
+              domainPadding={17}
+              width={350}
+              height={300}
+            >
+              <VictoryLegend
+                x={25}
+                y={0}
+                //  title="Legend"
+                centerTitle
+                orientation="horizontal"
+                gutter={20}
+                style={{ title: { fontSize: 20 } }}
+                data={[
+                  { name: "Plastic", symbol: { fill: "#009245" } },
+                  { name: "Paper", symbol: { fill: "#33CC66" } },
+                  { name: "Rest", symbol: { fill: "#66FF66" } },
+                  { name: "Total", symbol: { fill: "black" } }
+                ]}
+              />
+              <VictoryAxis
+                style={{ axisLabel: { padding: 32 } }}
+                dependentAxis
+                label="1000 kg"
+              />
+              <VictoryAxis />
               <VictoryLine
                 style={{ data: { stroke: "#009245" } }}
                 /*  animate={{ duration: 500, onStart: { duration: 1000 } }} */
@@ -130,25 +148,25 @@ export default function GeneralInfoScreen() {
                   { x: "Mar", y: 1 },
                   { x: "Apr", y: 1 },
                   { x: "May", y: 3.5 },
-									{ x: "Jun", y: 1 },
-									{ x: "Jul", y: 2 },
-									{ x: "Aug", y: 1 },
-									{ x: "Sept", y: 1 }
+                  { x: "Jun", y: 1 },
+                  { x: "Jul", y: 2 },
+                  { x: "Aug", y: 1 },
+                  { x: "Sept", y: 1 }
                 ]}
               />
               <VictoryLine
                 style={{ data: { stroke: "#33CC66" } }}
                 /* animate={{ duration: 500, onStart: { duration: 1000 } }} */
                 data={[
-									{ x: "Jan", y: 2.5 },
+                  { x: "Jan", y: 2.5 },
                   { x: "Feb", y: 3 },
                   { x: "Mar", y: 1.5 },
                   { x: "Apr", y: 2.5 },
                   { x: "May", y: 4 },
-									{ x: "Jun", y: 2 },
-									{ x: "Jul", y: 2 },
-									{ x: "Aug", y: 1.5 },
-									{ x: "Sept", y: 1.5 }
+                  { x: "Jun", y: 2 },
+                  { x: "Jul", y: 2 },
+                  { x: "Aug", y: 1.5 },
+                  { x: "Sept", y: 1.5 }
                 ]}
               />
               <VictoryLine
@@ -160,10 +178,10 @@ export default function GeneralInfoScreen() {
                   { x: "Mar", y: 17.5 },
                   { x: "Apr", y: 19 },
                   { x: "May", y: 18.5 },
-									{ x: "Jun", y: 19 },
-									{ x: "Jul", y: 15 },
-									{ x: "Aug", y: 16.5 },
-									{ x: "Sept", y: 17 }
+                  { x: "Jun", y: 19 },
+                  { x: "Jul", y: 15 },
+                  { x: "Aug", y: 16.5 },
+                  { x: "Sept", y: 17 }
                 ]}
               />
               <VictoryLine
@@ -175,10 +193,10 @@ export default function GeneralInfoScreen() {
                   { x: "Mar", y: 20 },
                   { x: "Apr", y: 22.5 },
                   { x: "May", y: 26 },
-									{ x: "Jun", y: 22 },
-									{ x: "Jul", y: 19 },
-									{ x: "Aug", y: 19 },
-									{ x: "Sept", y: 19.5 }
+                  { x: "Jun", y: 22 },
+                  { x: "Jul", y: 19 },
+                  { x: "Aug", y: 19 },
+                  { x: "Sept", y: 19.5 }
                 ]}
               />
             </VictoryChart>
@@ -198,7 +216,7 @@ export default function GeneralInfoScreen() {
               fontWeight: "bold"
             }}
           >
-            Trash distribution in SRS - December
+            Trash distribution in SRS - Dec 2019
           </Text>
 
           <VictoryPie
