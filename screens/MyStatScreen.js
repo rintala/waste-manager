@@ -22,14 +22,15 @@ import {
   VictoryChart,
   VictoryLine,
   VictoryPie,
-  VictoryTheme
+  VictoryTheme,
+  VictoryAxis
 } from "victory-native";
 import { isFor } from "@babel/types";
 
 export default function MyStatScreen(props) {
-  const [countPlastic, setPlastic] = useState(1);
-  const [countPaper, setPaper] = useState(1);
-  const [countRest, setRest] = useState(1);
+  const [countPlastic, setPlastic] = useState(0.4);
+  const [countPaper, setPaper] = useState(0.3);
+  const [countRest, setRest] = useState(0.9);
   const [ratio, setRatio] = useState(null);
 
   [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -42,6 +43,12 @@ export default function MyStatScreen(props) {
     { status: "down", color: "red" }
   ];
   const [status, setStatus] = useState(statuses[0].status);
+
+  const bagWeights = {
+    plastic: 0.5,
+    paper: 0.6,
+    rest: 0.9
+  };
 
   const data = [
     { type: "plastic", trashbags: countPlastic, fill: "#009245" },
@@ -168,11 +175,11 @@ export default function MyStatScreen(props) {
 
   incrementTrash = typeOfTrash => {
     if (typeOfTrash === "plastic") {
-      setPlastic(prevCountPlastic => ++prevCountPlastic);
+      setPlastic(prevCountPlastic => (prevCountPlastic += bagWeights.plastic));
     } else if (typeOfTrash === "paper") {
-      setPaper(prevCountPaper => ++prevCountPaper);
+      setPaper(prevCountPaper => (prevCountPaper += bagWeights.paper));
     } else if (typeOfTrash === "rest") {
-      setRest(prevCountRest => ++prevCountRest);
+      setRest(prevCountRest => (prevCountRest += bagWeights.rest));
     }
 
     setRatio(this.computeRatio());
@@ -272,7 +279,7 @@ export default function MyStatScreen(props) {
               padding: 20,
               marginTop: 5,
               marginLeft: 20,
-              marginRight: 20,
+              marginRight: 20
               // marginBottom: 5
             }}
           >
@@ -365,13 +372,18 @@ export default function MyStatScreen(props) {
             >
               To register thrown trash press the '+' for the correct trash type.
             </Text>
-
             <VictoryChart
               domainPadding={17}
               width={380}
               height={300}
               paddingRight={30}
             >
+              <VictoryAxis
+                style={{ axisLabel: { padding: 35 } }}
+                dependentAxis
+                label="kg"
+              />
+              <VictoryAxis />
               <VictoryBar
                 animate={{ duration: 500, onStart: { duration: 1000 } }}
                 style={{
