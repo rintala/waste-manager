@@ -94,7 +94,7 @@ export default function LearnMoreScreen() {
             style={{ marginTop: 10, width: "100%", height: 180 }}
             source={{
               uri:
-                "https://www.sustainableconsumption.se/wp-content/uploads/sites/34/2019/04/15951717452_db57fddd28_b-1024x675.jpg"
+                "https://intra.kth.se/polopoly_fs/1.915703.1562578909!/image/Matavfall_1000-667px.jpg"
             }}
           />
         </View>
