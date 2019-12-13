@@ -48,15 +48,11 @@ const GeneralInfoStack = createStackNavigator(
 );
 
 GeneralInfoStack.navigationOptions = {
-  tabBarLabel: "General Info",
+  tabBarLabel: "Neighbours",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-information-circle${focused ? "" : "-outline"}`
-          : "md-information-circle"
-      }
+      name={Platform.OS === "ios" ? `ios-people` : "md-people"}
     />
   )
 };
@@ -94,7 +90,11 @@ AboutStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-bulb" : "md-bulb"}
+      name={
+        Platform.OS === "ios"
+          ? "ios-information-circle-outline"
+          : "md-information-circle-outline"
+      }
     />
   )
 };
