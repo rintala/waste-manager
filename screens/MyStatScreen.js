@@ -138,7 +138,7 @@ export default function MyStatScreen(props) {
       }
     }
 
-    if (countPlastic === 5 && countPaper === 5 && countRest === 5) {
+    if (countPlastic > 4 && countPaper > 4 && countRest > 4) {
       achievement = achievements.thirdAchievement;
       if (achievement.isAchieved === false) {
         achievement.isAchieved = true;
@@ -152,7 +152,7 @@ export default function MyStatScreen(props) {
       }
     }
 
-    if (countPlastic === 10 && countPaper === 10 && countRest === 10) {
+    if (countPlastic > 6 && countPaper > 6 && countRest > 6) {
       achievement = achievements.fourthAchievement;
 
       if (achievement.isAchieved === false) {
