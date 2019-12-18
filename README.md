@@ -8,7 +8,7 @@ This application was produced as part of a larger project course where the follo
 
 The application is built in React Native and Expo. So simply run `npm install` to install all the dependencies, and then `npm start` to run the app in Expo. Then follow the instruction to run in simulator or on native device. We built the app mainly to support iOS and iPhone 11 Pro Max, but should work fine with some minor adjustments forother devices and Android as well.
 
-###Demo
+### Demo
 
 <a href="https://youtu.be/0zD1Ks4LaRg"><img title="Functional app demo - Youtube" alt="Functional app demo" src="doc/functional-thumb.png" width="250"></a>
 
@@ -40,6 +40,6 @@ The project was conducted by:
 
 The code is produced by:
 
-- Jonathan Rintala
-- Sebastian Ståhl
+- <a href="https://github.com/rintala">Jonathan Rintala</a>
+- <a href="https://github.com/sebastianstaahl">Sebastian Ståhl</a>
 
