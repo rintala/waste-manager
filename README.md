@@ -6,7 +6,7 @@ This application was produced as part of a larger project course where the follo
 
 ### Run project locally
 
-The application is built in React Native and Expo. So simply run `npm install` to install all the dependencies, and then `npm start` to run the app in Expo. Then follow the instruction to run in simulator or on native device. We built the app mainly to support iOS and iPhone 11 Pro Max, but should work fine with some minor adjustments forother devices and Android as well.
+The application is built in React Native and Expo. So simply run `npm install` to install all the dependencies, and then `npm start` to run the app in Expo. Then follow the instruction to run in simulator or on native device. We built the app mainly to support iOS and iPhone 11 Pro Max, but should work fine with some minor adjustments for other devices and Android as well.
 
 ### Demo
 
